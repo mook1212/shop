@@ -6,6 +6,8 @@ import './App.css';
 import './Route/Nav.module.css';
 import Navb from './Route/Nav.js'
 import Mainpage from './Route/Mainpage.js'
+import Footer from './Route/Footer.js';
+import Shop from './Route/Shop.js';
 
 function App() {
   let navigate = useNavigate();
@@ -18,11 +20,11 @@ function App() {
       <Routes>
         <Route path='/' element={<Mainpage></Mainpage>} />
 
-        <Route path='/shop' element={<Mainpage></Mainpage>} />
-
-
+        <Route path='/shop' element={<Shop></Shop>} />
 
       </Routes>
+
+      <Footer></Footer>
 
 
 

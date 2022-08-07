@@ -67,13 +67,13 @@ function Navb() {
                             if (drop == 'none') {
                                 document.body.classList.add("stop-scroll");
                                 setDrop('show')
-                                document.getElementById('main').style.marginLeft = '60%'
+                                document.querySelector('.App').style.marginLeft = '60%'
                                 document.getElementById('nav').style.marginLeft = '60%'
                             } else if (drop == 'show') {
                                 document.body.classList.remove("stop-scroll");
                                 setDrop('none')
+                                document.querySelector('.App').style.marginLeft = '0px'
                                 document.getElementById('nav').style.marginLeft = '0px'
-                                document.getElementById('main').style.marginLeft = '0px'
                             }
                         }} className="pointer fa-solid fa-bars"></i>
                     </div>
