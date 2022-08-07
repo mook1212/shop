@@ -1,0 +1,107 @@
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+.w-100 {
+    width: 100%;
+}
+nav {
+    background-color: transparent;
+    color: white;
+}
+
+.navbar {
+    z-index: 50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.logo {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-weight: lighter;
+    font-size: 40px;
+    /* margin: 10px; */
+    margin-top: 5px;
+    margin-left: 25px;
+}
+.logo a {
+    color: white;
+}
+
+.basket {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 18px;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 23px;
+}
+
+
+
+
+
+
+/* dropdown-menu */
+.dropdown-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: black;
+    overflow-x: hidden;
+
+    width: 60%;
+    height: 100%;
+    z-index: 100;
+    animation: fadeInDown 1s;
+
+    /* transform: translateY(-100%); */
+
+    background-color: white;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        /* transform: translate3d(0, -50%, 0); */
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateZ(50%);
+    }
+}
+
+.my {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+}
+.dropdown-nav p {
+    margin-left: 35px;
+    margin-bottom: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.sns {
+    display: flex;
+    margin-left: 35px;
+}
+.sns i{
+    margin-right: 20px;
+    margin-top: 30px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+
