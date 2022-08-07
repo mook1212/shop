@@ -14,6 +14,9 @@ function App() {
     <div id='App' className='App'>
 
       <h2>깃 허브 업데이트 됐냐?</h2>
+      <h2>깃 허브 업데이트 됐냐?</h2>
+      <h2>깃 허브 업데이트 됐냐?</h2>
+      <h2>깃 허브 업데이트 됐냐?</h2>
 
       <Navb />
 
