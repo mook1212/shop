@@ -22,22 +22,41 @@ function Shop() {
             <br></br>
             <br></br>
             <br></br>
-            <div className={cs('container')}>
-                {
-                    newarr.map((a, i) => {
+            {
+                newarr.map((a, i) => {
+                    // console.log(newarr[i-1].img);
+                    // console.log(newarr);
+                    // if (i % 3 == 0) {
+                    //     return <p>{newarr[i].img}</p>
+                    // }
 
+                    if (i != 0 && i % 3 == 0) {
                         return (
-                            <div className={cs('img-box')}>
-                                <img src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
-                                <p>{a.title}</p>
-                                <p>가격 : {a.price}</p>
+                            <div className={cs('dd')}>
+                                <div className={cs('img-box')}>
+                                    <img src={process.env.PUBLIC_URL + `/img/${newarr[i - 2].img}.jpg`} />
+                                    <p>{newarr[i - 2].title}</p>
+                                    <p>가격 : {newarr[i - 2].price}</p>
+                                </div>
+                                <div className={cs('img-box')}>
+                                    <img src={process.env.PUBLIC_URL + `/img/${newarr[i - 1].img}.jpg`} />
+                                    <p>{newarr[i - 1].title}</p>
+                                    <p>가격 : {newarr[i - 1].price}</p>
+                                </div>
+                                <div className={cs('img-box')}>
+                                    <img src={process.env.PUBLIC_URL + `/img/${newarr[i].img}.jpg`} />
+                                    <p>{newarr[i].title}</p>
+                                    <p>가격 : {newarr[i].price}</p>
+                                </div>
+
                             </div>
                         )
-                        
-                    })
-                }
+                    }
 
-            </div>
+
+                })
+            }
+
         </div>
     )
 }

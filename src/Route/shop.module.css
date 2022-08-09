@@ -16,5 +16,13 @@
     height: 100%;
 }
 .dd {
-    font-size: 500px;
+    display: flex;
+    justify-content: space-around;
+}
+.dd :first-child {
+    /* margin-left: 100px; */
+}
+
+.dd :last-child {
+    /* margin-right: 100px; */
 }
