@@ -1,6 +1,9 @@
+import { configureStore, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
 
-function Data () {
-    let dress = [
+let dress = createSlice({
+    name : 'dress',
+    initialState : [
         {
             id : 0,
             title: 'COWL NECK LONG SLEEVE DRESS',
@@ -32,8 +35,59 @@ function Data () {
             img: 'dress4'
         },
     ]
-    
-    let top = [
+})
+
+let auter = createSlice({
+    name : 'auter',
+    initialState : [
+        {
+            id : 0,
+            title: 'WOOL MIX MID-LENGTH COAT',
+            price: '$180',
+            img: '아우터0'
+        },
+        {
+            id : 1,
+            title: 'WOOL MIX BELTED COAT',
+            price: '$225',
+            img: '아우터1'
+        },
+        {
+            id : 2,
+            title: 'SHORT PUFFER JACKET',
+            price: '$180',
+            img: '아우터2'
+        },
+        {
+            id : 3,
+            title: 'WOOL MIX WORKWEAR BLAZER',
+            price: '$135',
+            img: '아우터3'
+        },
+        {
+            id : 4,
+            title: 'WOOL CLEAN CUT JACKET',
+            price: '$115',
+            img: '아우터4'
+        },
+        {
+            id : 5,
+            title: 'PADDED BUTTON-UP JACKET',
+            price: '$99',
+            img: '아우터5'
+        },
+        {
+            id : 6,
+            title: 'DOWN FILLED SHORT PUFFER JACKET',
+            price: '$180',
+            img: '아우터6'
+        },
+    ]
+})
+
+let top = createSlice({
+    name : 'top',
+    initialState : [
         {
             id : 0,
             title: 'RIBBED COLLAR WOOL-ALPACA TOP',
@@ -83,53 +137,11 @@ function Data () {
             img: 'top7'
         },
     ]
-    
-    let auter = [
-        {
-            id : 0,
-            title: 'WOOL MIX MID-LENGTH COAT',
-            price: '$180',
-            img: '아우터0'
-        },
-        {
-            id : 1,
-            title: 'WOOL MIX BELTED COAT',
-            price: '$225',
-            img: '아우터1'
-        },
-        {
-            id : 2,
-            title: 'SHORT PUFFER JACKET',
-            price: '$180',
-            img: '아우터2'
-        },
-        {
-            id : 3,
-            title: 'WOOL MIX WORKWEAR BLAZER',
-            price: '$135',
-            img: '아우터3'
-        },
-        {
-            id : 4,
-            title: 'WOOL CLEAN CUT JACKET',
-            price: '$115',
-            img: '아우터4'
-        },
-        {
-            id : 5,
-            title: 'PADDED BUTTON-UP JACKET',
-            price: '$99',
-            img: '아우터5'
-        },
-        {
-            id : 6,
-            title: 'DOWN FILLED SHORT PUFFER JACKET',
-            price: '$180',
-            img: '아우터6'
-        },
-    ]
-    
-    let pants = [
+})
+
+let bottom = createSlice({
+    name : 'bottom',
+    initialState : [
         {
             id : 0,
             title: 'LONG WIDE-LEG WOOL PANTS',
@@ -173,4 +185,13 @@ function Data () {
             img: 'pants6'
         },
     ]
-}
+})
+
+export default configureStore({
+  reducer: { 
+    dress : dress.reducer,
+    top : top.reducer,
+    auter : auter.reducer,
+    bottom : bottom.reducer
+  }
+}) 

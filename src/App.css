@@ -1,5 +1,7 @@
 .App {
+  /* overflow-x: hidden; */
 }
+
 
 html * {
   margin: 0px;

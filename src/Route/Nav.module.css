@@ -7,7 +7,7 @@
 }
 nav {
     background-color: transparent;
-    color: white;
+    /* color: white; */
 }
 
 .navbar {
@@ -27,7 +27,7 @@ nav {
     margin-left: 25px;
 }
 .logo a {
-    color: white;
+    /* color: white; */
 }
 
 .basket {

@@ -81,3 +81,8 @@
         object-fit: cover;
     }
 }
+@media (max-width: 600px) {
+    .img-box {
+        height: 700px;
+    }
+}
