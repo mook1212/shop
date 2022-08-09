@@ -37,11 +37,17 @@ nav {
     margin-right: 15px;
     font-size: 18px;
 }
+.basket i {
+    margin-bottom: 6px;
+}
 .menu {
     display: flex;
     align-items: center;
     margin-left: 15px;
     font-size: 23px;
+}
+.menu i {
+    margin-bottom: 6px;
 }
 
 

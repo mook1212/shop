@@ -20,39 +20,45 @@ function Navb() {
     }
     var beforePosition = document.documentElement.scrollTop
 
-    // document.addEventListener('scroll', function () {
+    document.addEventListener('scroll', function () {
 
-    //     var afterPosition = document.documentElement.scrollTop;
+        var afterPosition = document.documentElement.scrollTop;
 
-    //     if (window.scrollY == 0) {
-    //         document.getElementById('nav').style.backgroundColor = ''
-    //     }
-
-
-    //     if (afterPosition > 50) {
+        if (window.scrollY == 0) {
+            document.getElementById('nav').style.backgroundColor = ''
+        }
 
 
-    //         if (beforePosition < afterPosition) {
-    //             // 스크롤 아래로
-
-    //             // document.getElementById('nav').style.backgroundColor = ''
-    //             // document.getElementById('nav').style.opacity = '0'
-
-    //         } else {
-    //             // 스크롤 위로 
-    //             document.getElementById('nav').style.opacity = '1'
-    //             document.getElementById('nav').style.transition = 'all 1s'
-    //             document.getElementById('nav').style.backgroundColor = 'black'
+        if (afterPosition > 50) {
 
 
-    //         }
+            if (beforePosition < afterPosition) {
+                // 스크롤 아래로
 
-    //     } else {
-    //         // 평상 시
-    //         // document.getElementById('nav').style.backgroundColor = ''
-    //     }
-    //     beforePosition = afterPosition;
-    // });
+                document.getElementById('nav').style.backgroundColor = 'black'
+                document.querySelector('a').style.color = 'white'
+                document.querySelector('nav i').style.color = 'white'
+                document.getElementById('basket').style.color = 'white'
+                // document.getElementById('nav').style.opacity = '0'
+
+            } else {
+                // 스크롤 위로 
+                document.getElementById('nav').style.opacity = '1'
+                document.getElementById('nav').style.transition = 'all 1s'
+                document.getElementById('nav').style.backgroundColor = ''
+                document.querySelector('a').style.color = 'black'
+                document.querySelector('nav i').style.color = 'black'
+                document.getElementById('basket').style.color = 'black'
+
+
+            }
+
+        } else {
+            // 평상 시
+            // document.getElementById('nav').style.backgroundColor = ''
+        }
+        beforePosition = afterPosition;
+    });
 
     return (
         <>
@@ -83,7 +89,7 @@ function Navb() {
                     </div>
 
                     <div className={cs('basket')}>
-                        <i class="pointer fa-solid fa-basket-shopping"></i>
+                        <i id='basket' className="pointer fa-solid fa-basket-shopping"></i>
                     </div>
 
                 </nav>

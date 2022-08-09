@@ -1,15 +1,15 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
+    justify-content: space-around
+    /* width: 100%; */
 }
 .img-box {
     width: 450px;
     height: 550px;
     /* border: 1px solid red; */
     text-align: center;
-    margin: 30px;
+    margin: 40px 30px;
 }
 .img-box img {
     width: 100%;
@@ -17,12 +17,15 @@
 }
 .dd {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    /* justify-content: space-around; */
 }
-.dd :first-child {
-    /* margin-left: 100px; */
+/* .first {
+    margin-left: 150px;
 }
 
-.dd :last-child {
-    /* margin-right: 100px; */
-}
+.last {
+    margin-right: 150px;
+} */
