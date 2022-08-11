@@ -7,6 +7,8 @@ const cs = classNames.bind(style);
 
 function Navb() {
 
+    
+
     let navigate = useNavigate();
     let [drop, setDrop] = useState('none')
 
@@ -18,6 +20,13 @@ function Navb() {
             setDrop('none')
         }
     }
+
+    // var link =  document.location.href;
+    // console.log(link);
+    // if( link == 'http://localhost:3000/') {
+    //     document.querySelector('a').style.color = 'white'
+    // }
+
     var beforePosition = document.documentElement.scrollTop
 
     document.addEventListener('scroll', function () {
@@ -40,11 +49,13 @@ function Navb() {
                 document.querySelector('nav i').style.color = 'white'
                 document.getElementById('basket').style.color = 'white'
                 // document.getElementById('nav').style.opacity = '0'
+                // document.getElementById('nav').style.transition = '1s'
+
 
             } else {
                 // 스크롤 위로 
                 document.getElementById('nav').style.opacity = '1'
-                document.getElementById('nav').style.transition = 'all 1s'
+                document.getElementById('nav').style.transition = '1s'
                 document.getElementById('nav').style.backgroundColor = ''
                 document.querySelector('a').style.color = 'black'
                 document.querySelector('nav i').style.color = 'black'
@@ -55,7 +66,7 @@ function Navb() {
 
         } else {
             // 평상 시
-            // document.getElementById('nav').style.backgroundColor = ''
+                // document.getElementById('nav').style.backgroundColor = ''
         }
         beforePosition = afterPosition;
     });

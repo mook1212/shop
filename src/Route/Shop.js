@@ -7,61 +7,83 @@ import { useSelector } from 'react-redux';
 import axios from 'axios'
 const cs = classNames.bind(style);
 
+
 function Shop() {
 
     let a = useSelector((state) => { return state })
 
     let arr = []
     let newarr = arr.concat(a.dress, a.top, a.bottom, a.auter)
-    console.log(newarr);
+    // console.log(newarr);
+
+    let [zz, setzz] = useState(All())
 
     let navigate = useNavigate();
 
+    function A() {
+        return (
+            <>
+                <p>안녕</p>
+            </>
+        )
+    }
+
+    function All() {
+
+        return (
+            newarr.map((a, i) => {
+
+                return (
+                    <div className={cs('img-box')}>
+                        <img src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
+                        <p>{a.title}</p>
+                        <p>가격 : {a.price}</p>
+                    </div>
+                )
+            })
+        )
+    }
+
+    function Category(z) {
+        return (
+            z.map((a, i) => {
+                return (
+                    <div className={cs('img-box')}>
+                        <img src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
+                        <p>{a.title}</p>
+                        <p>가격 : {a.price}</p>
+                    </div>
+                )
+            })
+        )
+    }
+
+
     return (
         <div className='Shop'>
-            <br></br>
-            <br></br>
-            <br></br>
-            <div className={cs('dd')}>
+            <div className={cs('category')}>
 
-                {
-                    newarr.map((a, i) => {
-                        return (
-                            <div className={cs('img-box', 'first')}>
-                                <img src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
-                                <p>{a.title}</p>
-                                <p>가격 : {a.price}</p>
-                            </div>
-                        )
+                <p onClick={() => {
+                    setzz(Category(a.dress))
+                }}>ALL</p>
 
-
-                        // if (i != 0 && i % 3 == 0) {
-                        //     return (
-                        //         <div className={cs('dd')}>
-                        //             <div className={cs('img-box','first')}>
-                        //                 <img src={process.env.PUBLIC_URL + `/img/${newarr[i - 2].img}.jpg`} />
-                        //                 <p>{newarr[i - 2].title}</p>
-                        //                 <p>가격 : {newarr[i - 2].price}</p>
-                        //             </div>
-                        //             <div className={cs('img-box')}>
-                        //                 <img src={process.env.PUBLIC_URL + `/img/${newarr[i - 1].img}.jpg`} />
-                        //                 <p>{newarr[i - 1].title}</p>
-                        //                 <p>가격 : {newarr[i - 1].price}</p>
-                        //             </div>
-                        //             <div className={cs('img-box','last')}>
-                        //                 <img src={process.env.PUBLIC_URL + `/img/${newarr[i].img}.jpg`} />
-                        //                 <p>{newarr[i].title}</p>
-                        //                 <p>가격 : {newarr[i].price}</p>
-                        //             </div>
-
-                        //         </div>
-                        //     )
-                        // }
-
-
-                    })
-                }
+                <p>COATS &amp; JACKET</p>
+                <p>TOPS</p>
+                <p>DRESSES</p>
+                <p>BOTTOMS</p>
             </div>
+
+            <div className={cs('sale')}>
+                <p>LATEST PRODUCTS</p>
+                <p>20% OFF ALL TOPS &amp; DRESS</p>
+            </div>
+
+            <div id='item-box'>
+                <div id='dd' className={cs('dd')}>
+                    {zz}
+                </div>
+            </div>
+
             <br></br>
             <br></br>
 
@@ -69,5 +91,8 @@ function Shop() {
         </div>
     )
 }
+
+
+
 
 export default Shop

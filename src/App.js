@@ -26,10 +26,16 @@ function App() {
 
       <Footer></Footer>
 
-
-
     </div>
   );
 }
+
+// function na() {
+//   var link = document.location.href;
+//   console.log(link);
+//   if (link == 'http://localhost:3000/') {
+//     document.querySelector('#basket').style.color = 'white'
+//   }
+// }
 
 export default App;

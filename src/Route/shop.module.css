@@ -1,3 +1,16 @@
+.category {
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+}
+.category p {
+    margin: 7px;
+    cursor: pointer;
+}
+.sale {
+    text-align: center;
+    margin-top: 10px;
+}
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -29,3 +42,11 @@
 .last {
     margin-right: 150px;
 } */
+@media (max-width:600px) {
+    .category p{
+        font-size: 14px;
+    }
+    .sale p{
+        font-size: 14px;
+    }
+}
