@@ -48,7 +48,9 @@ function Shop() {
         return (
             z.map((a, i) => {
                 return (
-                    <div className={cs('img-box')}>
+                    <div className={cs('img-box')} onClick={(e) => {
+                        console.log(e.target);
+                    }}>
                         <img src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
                         <p>{a.title}</p>
                         <p>가격 : {a.price}</p>
@@ -86,10 +88,8 @@ function Shop() {
                 <p>20% OFF ALL TOPS &amp; DRESS</p>
             </div>
 
-            <div id='item-box'>
-                <div id='dd' className={cs('dd')}>
-                    {item}
-                </div>
+            <div id='dd' className={cs('dd')}>
+                {item}
             </div>
 
             <br></br>
