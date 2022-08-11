@@ -16,7 +16,7 @@ function Shop() {
     let newarr = arr.concat(a.dress, a.top, a.bottom, a.auter)
     // console.log(newarr);
 
-    let [zz, setzz] = useState(All())
+    let [item, setItem] = useState(All())
 
     let navigate = useNavigate();
 
@@ -64,13 +64,21 @@ function Shop() {
             <div className={cs('category')}>
 
                 <p onClick={() => {
-                    setzz(Category(a.dress))
+                    setItem(All())
                 }}>ALL</p>
 
-                <p>COATS &amp; JACKET</p>
-                <p>TOPS</p>
-                <p>DRESSES</p>
-                <p>BOTTOMS</p>
+                <p onClick={() => {
+                    setItem(Category(a.auter))
+                }}>COATS &amp; JACKET</p>
+                <p onClick={() => {
+                    setItem(Category(a.top))
+                }}>TOPS</p>
+                <p onClick={() => {
+                    setItem(Category(a.dress))
+                }}>DRESSES</p>
+                <p onClick={() => {
+                    setItem(Category(a.bottom))
+                }}>BOTTOMS</p>
             </div>
 
             <div className={cs('sale')}>
@@ -80,7 +88,7 @@ function Shop() {
 
             <div id='item-box'>
                 <div id='dd' className={cs('dd')}>
-                    {zz}
+                    {item}
                 </div>
             </div>
 
