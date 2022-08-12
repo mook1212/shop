@@ -7,7 +7,7 @@ const cs = classNames.bind(style);
 
 function Navb() {
 
-    
+
 
     let navigate = useNavigate();
     let [drop, setDrop] = useState('none')
@@ -66,7 +66,7 @@ function Navb() {
 
         } else {
             // 평상 시
-                // document.getElementById('nav').style.backgroundColor = ''
+            // document.getElementById('nav').style.backgroundColor = ''
         }
         beforePosition = afterPosition;
     });
@@ -79,18 +79,18 @@ function Navb() {
                     <div className={cs('menu')}>
                         <i onClick={() => {
                             document.body.classList.add("stop-scroll");
-
+                            document.querySelector('.fa-bars').style.position = 'absolute'
 
                             if (drop == 'none') {
                                 document.body.classList.add("stop-scroll");
                                 setDrop('show')
-                                document.querySelector('.App').style.marginLeft = '60%'
-                                document.getElementById('nav').style.marginLeft = '60%'
+                                // document.querySelector('.App').style.marginLeft = '60%'
+                                // document.getElementById('nav').style.marginLeft = '60%'
                             } else if (drop == 'show') {
                                 document.body.classList.remove("stop-scroll");
                                 setDrop('none')
-                                document.querySelector('.App').style.marginLeft = '0px'
-                                document.getElementById('nav').style.marginLeft = '0px'
+                                // document.querySelector('.App').style.marginLeft = '0px'
+                                // document.getElementById('nav').style.marginLeft = '0px'
                             }
                         }} className="pointer fa-solid fa-bars"></i>
                     </div>
@@ -108,6 +108,17 @@ function Navb() {
 
             <div id='dropdown-nav' className={cs(`dropdown-nav`, `${drop}`)}>
                 <div className={cs('nav-modal')}>
+                    <div className={cs('close-dropdown')}>
+                        <p><i onClick={() => {
+                            if (drop == 'none') {
+                                document.body.classList.add("stop-scroll");
+                                setDrop('show')
+                            } else if (drop == 'show') {
+                                document.body.classList.remove("stop-scroll");
+                                setDrop('none')
+                            }
+                        }} class="fa-solid fa-xmark"></i></p>
+                    </div>
                     <div className={cs('my')}>
                         <p>SIGN IN</p>
                         <p>MYPAGE</p>
