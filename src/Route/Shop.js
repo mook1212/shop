@@ -34,8 +34,10 @@ function Shop() {
             newarr.map((a, i) => {
 
                 return (
-                    <div className={cs('img-box')}>
-                        <img src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
+                    <div className={cs('img-box')} onClick={(e) => {
+                        console.log(e.target.id);
+                    }}>
+                        <img id={a.img} src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
                         <p>{a.title}</p>
                         <p>가격 : {a.price}</p>
                     </div>
@@ -49,9 +51,9 @@ function Shop() {
             z.map((a, i) => {
                 return (
                     <div className={cs('img-box')} onClick={(e) => {
-                        console.log(e.target);
+                        console.log(e.target.id);
                     }}>
-                        <img src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
+                        <img id={a.img} src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
                         <p>{a.title}</p>
                         <p>가격 : {a.price}</p>
                     </div>
