@@ -8,6 +8,7 @@ import Navb from './Route/Nav.js'
 import Mainpage from './Route/Mainpage.js'
 import Footer from './Route/Footer.js';
 import Shop from './Route/Shop.js';
+import Detail from './Route/Detail.js';
 
 function App() {
   let navigate = useNavigate();
@@ -22,6 +23,8 @@ function App() {
 
         <Route path='/shop' element={<Shop></Shop>} />
 
+        <Route path='/:page' element={<Detail></Detail>} />
+
       </Routes>
 
       <Footer></Footer>
@@ -30,12 +33,6 @@ function App() {
   );
 }
 
-// function na() {
-//   var link = document.location.href;
-//   console.log(link);
-//   if (link == 'http://localhost:3000/') {
-//     document.querySelector('#basket').style.color = 'white'
-//   }
-// }
+
 
 export default App;

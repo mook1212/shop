@@ -14,7 +14,7 @@ function Shop() {
 
     let arr = []
     let newarr = arr.concat(a.dress, a.top, a.bottom, a.auter)
-    // console.log(newarr);
+    console.log(newarr);
 
     let [item, setItem] = useState(All())
 
@@ -52,6 +52,7 @@ function Shop() {
                 return (
                     <div className={cs('img-box')} onClick={(e) => {
                         console.log(e.target.id);
+                        window.location.href = `/${e.target.id}`
                     }}>
                         <img id={a.img} src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
                         <p>{a.title}</p>
