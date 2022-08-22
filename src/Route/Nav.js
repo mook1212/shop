@@ -44,12 +44,12 @@ function Navb() {
             if (beforePosition < afterPosition) {
                 // 스크롤 아래로
 
+                // document.getElementById('nav').style.opacity = '0'
+                document.getElementById('nav').style.transition = '1s'
                 document.getElementById('nav').style.backgroundColor = 'black'
                 document.querySelector('a').style.color = 'white'
                 document.querySelector('nav i').style.color = 'white'
                 document.getElementById('basket').style.color = 'white'
-                // document.getElementById('nav').style.opacity = '0'
-                // document.getElementById('nav').style.transition = '1s'
 
 
             } else {

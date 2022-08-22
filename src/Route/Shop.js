@@ -1,41 +1,56 @@
 import style from './shop.module.css'
 import classNames from 'classnames/bind'
+import Jdata from '../DB/data.json'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createContext, useState } from "react"
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import axios from 'axios'
 const cs = classNames.bind(style);
+// import Detail from './Detail.js'
+
 
 
 function Shop() {
 
-    let a = useSelector((state) => { return state })
+    // let a = useSelector((state) => { return state })
 
-    let arr = []
-    let newarr = arr.concat(a.dress, a.top, a.bottom, a.auter)
-    console.log(newarr);
+    // let arr = []
+    // let newarr = arr.concat(a.dress, a.top, a.bottom, a.auter)
+    // console.log(newarr);
+    // console.log(a.auter);
 
     let [item, setItem] = useState(All())
 
     let navigate = useNavigate();
+    console.log(Jdata);
+    let data = []
+    let newdata = data.concat(Jdata.dress,Jdata.auter,Jdata.bottom,Jdata.top)
+    console.log(newdata);
 
     function A() {
+
         return (
             <>
                 <p>안녕</p>
             </>
         )
+
     }
 
     function All() {
+        let data = []
+        let newdata = data.concat(Jdata.dress,Jdata.auter,Jdata.bottom,Jdata.top)
+        console.log(newdata);
 
         return (
-            newarr.map((a, i) => {
+            newdata.map((a, i) => {
 
                 return (
                     <div className={cs('img-box')} onClick={(e) => {
+                        window.location.href = `/${a.img}`
                         console.log(e.target.id);
+                        console.log(a.title);
                     }}>
                         <img id={a.img} src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
                         <p>{a.title}</p>
@@ -51,8 +66,8 @@ function Shop() {
             z.map((a, i) => {
                 return (
                     <div className={cs('img-box')} onClick={(e) => {
+                        window.location.href = `/${a.img}`
                         console.log(e.target.id);
-                        window.location.href = `/${e.target.id}`
                     }}>
                         <img id={a.img} src={process.env.PUBLIC_URL + `/img/${a.img}.jpg`} />
                         <p>{a.title}</p>
@@ -73,16 +88,16 @@ function Shop() {
                 }}>ALL</p>
 
                 <p onClick={() => {
-                    setItem(Category(a.auter))
+                    setItem(Category(Jdata.auter))
                 }}>COATS &amp; JACKET</p>
                 <p onClick={() => {
-                    setItem(Category(a.top))
+                    setItem(Category(Jdata.top))
                 }}>TOPS</p>
                 <p onClick={() => {
-                    setItem(Category(a.dress))
+                    setItem(Category(Jdata.dress))
                 }}>DRESSES</p>
                 <p onClick={() => {
-                    setItem(Category(a.bottom))
+                    setItem(Category(Jdata.bottom))
                 }}>BOTTOMS</p>
             </div>
 
