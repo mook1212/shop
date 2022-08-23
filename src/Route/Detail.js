@@ -20,6 +20,17 @@ function Detail() {
     let navigate = useNavigate();
     console.log(page);
 
+    let [drop, setDrop] = useState('none')
+
+    function None() {
+        document.body.classList.remove("stop-scroll");
+        if (drop == 'none') {
+            setDrop('show')
+        } else if (drop == 'show') {
+            setDrop('none')
+        }
+    }
+
     function Filter() {
         let data = []
         let newdata = data.concat(Jdata.dress, Jdata.auter, Jdata.bottom, Jdata.top)
@@ -32,9 +43,9 @@ function Detail() {
                     <img src={process.env.PUBLIC_URL + `/img/${page}.jpg`} />
                 </div>
                 <div className={cs('cart')}>
-                    <p>{aa[0].title}</p>
+                    <p style={{ fontWeight: 'bold' }}>{aa[0].title}</p>
                     <br></br>
-                    <p>{aa[0].price}</p>
+                    <p style={{ fontSize: '14px' }}>{aa[0].price}</p>
                     <br></br>
                     <div className={cs('shipping')}>
                         <div className={cs('ship-box1')}>
@@ -49,9 +60,44 @@ function Detail() {
                                 <option value="">수령시 결제(착불)</option>
                             </select>
                             <p style={{ fontSize: '13px', marginLeft: '0px' }}>0원 (OPEN기념 무료 배송)</p>
-
                         </div>
                     </div>
+
+                    <div className={cs('explanation')}>
+                        <p >INSTRUCTION</p>
+                        <p >SIZE GUIDE</p>
+                        <p >SHIPPING</p>
+                    </div>
+
+                    {/* <div className={cs('instruction')}>
+
+                    </div>
+
+                    <div className={cs('size-guide', `${drop}`)}>
+                        <img src={process.env.PUBLIC_URL + `/img/size.jpg`} />
+                    </div>
+
+                    <div className={cs('shipping-guide')}>
+
+                    </div> */}
+
+                    <div className={cs('size-box')}>
+                        <select>
+                            <option value="">-[필수] 옵션을 선택해 주세요-</option>
+                            <option value="">----------------------------</option>
+                            <option value="FREE">FREE</option>
+                        </select>
+                    </div>
+
+                    <div className={cs('total')}>
+                        <p>TOTAL :</p>
+                    </div>
+
+                    <div className={cs('buy')}>
+                        <button>ADD CART</button>
+                        <button>BUY NOW</button>
+                    </div>
+
                 </div>
             </>
         )

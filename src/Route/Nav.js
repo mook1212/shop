@@ -21,11 +21,6 @@ function Navb() {
         }
     }
 
-    // var link =  document.location.href;
-    // console.log(link);
-    // if( link == 'http://localhost:3000/') {
-    //     document.querySelector('a').style.color = 'white'
-    // }
 
     var beforePosition = document.documentElement.scrollTop
 
