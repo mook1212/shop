@@ -72,6 +72,18 @@ select {
     margin-top: 30px;
     font-size: 14px;
 }
+
+.count {
+    display: flex;
+}
+.count input {
+    width: 40px;
+}
+.count button {
+    border: 1px solid;
+    margin-right: 1px;
+}
+
 .total {
     margin-top: 20px;
 }

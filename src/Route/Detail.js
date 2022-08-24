@@ -31,12 +31,28 @@ function Detail() {
         }
     }
 
+
     function Filter() {
         let data = []
         let newdata = data.concat(Jdata.dress, Jdata.auter, Jdata.bottom, Jdata.top)
         console.log(newdata);
 
         let aa = newdata.filter(man => man.img == page)
+
+
+        let [count, setCount] = useState(1)
+        let [price, setPrice] = useState(aa[0].price)
+
+        function Countplus() {
+            setCount(count + 1)
+            setPrice(aa[0].price * 2)
+        }
+        function Countdown() {
+            if (count != 1) {
+                setCount(count - 1)
+            }
+        }
+
         return (
             <>
                 <div className={cs('img-box')}>
@@ -87,6 +103,19 @@ function Detail() {
                             <option value="">----------------------------</option>
                             <option value="FREE">FREE</option>
                         </select>
+                    </div>
+
+                    <div className={cs('goods')}>
+                        <p>{aa[0].title}</p>
+                        <div className='flex'>
+                            <p>Free</p>
+                            <p style={{ marginLeft: 'auto' }}>{price}</p>
+                        </div>
+                        <div className={cs('count')}>
+                            <input type="number" value={count} min="1" max="10" />
+                            <button onClick={() => { Countplus() }} style={{ marginLeft: '10px' }}>+</button>
+                            <button onClick={() => { Countdown() }}>-</button>
+                        </div>
                     </div>
 
                     <div className={cs('total')}>
