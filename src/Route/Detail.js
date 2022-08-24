@@ -2,7 +2,7 @@ import style from './Detail.module.css'
 import classNames from 'classnames/bind'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Jdata from '../DB/data.json'
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { Route, Routes, Link, useNavigate, Outlet, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import axios from 'axios'
@@ -22,6 +22,8 @@ function Detail() {
 
     let [drop, setDrop] = useState('none')
 
+
+
     function None() {
         if (drop == 'none') {
             setDrop('show')
@@ -32,6 +34,8 @@ function Detail() {
 
 
     function Filter() {
+        let [opt, setOpt] = useState('none')
+
         let aa = []
         let newdata = aa.concat(Jdata.dress, Jdata.auter, Jdata.bottom, Jdata.top)
         console.log(newdata);
@@ -41,22 +45,32 @@ function Detail() {
 
         let [count, setCount] = useState(1)
         let p = parseFloat(data[0].price)
-        
+
         console.log(p);
         let [price, setPrice] = useState(p)
 
         function Countplus() {
             setCount(count + 1)
-            setPrice(p*(count+1))
+            setPrice(p * (count + 1))
         }
         function Countdown() {
             if (count != 1) {
                 setCount(count - 1)
-                setPrice(p*(count-1))
+                setPrice(p * (count - 1))
             }
         }
 
         let pp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+        // var value = document.querySelectorAll('select')[1].value
+        // if (value == 'FREE'){
+        //     setOpt('show')
+        // }
+
+        function Opt() {
+            console.log(document.querySelectorAll('select')[1].value);
+        }
+
 
         return (
             <>
@@ -103,14 +117,19 @@ function Detail() {
                     </div> */}
 
                     <div className={cs('size-box')}>
-                        <select>
+                        <select onChange={()=> {
+                            let value = document.querySelectorAll('select')[1].value
+                            if(value == 'FREE') {
+                                setOpt('show')
+                            }
+                        }}>
                             <option value="">-[필수] 옵션을 선택해 주세요-</option>
                             <option value="">----------------------------</option>
-                            <option value="FREE">FREE</option>
+                            <option  value="FREE">FREE</option>
                         </select>
                     </div>
 
-                    <div className={cs('goods',`${drop}`)}>
+                    <div className={cs('goods',`${opt}`)}>
                         <p>{data[0].title}</p>
                         <div className='flex'>
                             <p>Free</p>
@@ -124,7 +143,7 @@ function Detail() {
                     </div>
 
                     <div className={cs('total')}>
-                        <p>TOTAL :</p>
+                        <p>TOTAL : {pp}원</p>
                     </div>
 
                     <div className={cs('buy')}>
@@ -140,7 +159,6 @@ function Detail() {
     return (
         <div className={cs('detail')}>
             {Filter()}
-
         </div>
     )
 }
