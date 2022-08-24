@@ -23,7 +23,6 @@ function Detail() {
     let [drop, setDrop] = useState('none')
 
     function None() {
-        document.body.classList.remove("stop-scroll");
         if (drop == 'none') {
             setDrop('show')
         } else if (drop == 'show') {
@@ -33,25 +32,31 @@ function Detail() {
 
 
     function Filter() {
-        let data = []
-        let newdata = data.concat(Jdata.dress, Jdata.auter, Jdata.bottom, Jdata.top)
+        let aa = []
+        let newdata = aa.concat(Jdata.dress, Jdata.auter, Jdata.bottom, Jdata.top)
         console.log(newdata);
 
-        let aa = newdata.filter(man => man.img == page)
+        let data = newdata.filter(man => man.img == page)
 
 
         let [count, setCount] = useState(1)
-        let [price, setPrice] = useState(aa[0].price)
+        let p = parseFloat(data[0].price)
+        
+        console.log(p);
+        let [price, setPrice] = useState(p)
 
         function Countplus() {
             setCount(count + 1)
-            setPrice(aa[0].price * 2)
+            setPrice(p*(count+1))
         }
         function Countdown() {
             if (count != 1) {
                 setCount(count - 1)
+                setPrice(p*(count-1))
             }
         }
+
+        let pp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
         return (
             <>
@@ -59,9 +64,9 @@ function Detail() {
                     <img src={process.env.PUBLIC_URL + `/img/${page}.jpg`} />
                 </div>
                 <div className={cs('cart')}>
-                    <p style={{ fontWeight: 'bold' }}>{aa[0].title}</p>
+                    <p style={{ fontWeight: 'bold' }}>{data[0].title}</p>
                     <br></br>
-                    <p style={{ fontSize: '14px' }}>{aa[0].price}</p>
+                    <p style={{ fontSize: '14px' }}>{data[0].price}원</p>
                     <br></br>
                     <div className={cs('shipping')}>
                         <div className={cs('ship-box1')}>
@@ -105,11 +110,11 @@ function Detail() {
                         </select>
                     </div>
 
-                    <div className={cs('goods')}>
-                        <p>{aa[0].title}</p>
+                    <div className={cs('goods',`${drop}`)}>
+                        <p>{data[0].title}</p>
                         <div className='flex'>
                             <p>Free</p>
-                            <p style={{ marginLeft: 'auto' }}>{price}</p>
+                            <p style={{ marginLeft: 'auto' }}>{pp}원</p>
                         </div>
                         <div className={cs('count')}>
                             <input type="number" value={count} min="1" max="10" />
