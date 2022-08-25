@@ -115,7 +115,10 @@ function Navb() {
                         }} class="fa-solid fa-xmark"></i></p>
                     </div>
                     <div className={cs('my')}>
-                        <p>SIGN IN</p>
+                        <p onClick={()=>{
+                            navigate('/login');
+                            None();
+                        }}>SIGN IN</p>
                         <p>MYPAGE</p>
                     </div>
 
@@ -123,7 +126,10 @@ function Navb() {
                     <br></br>
 
                     <div>
-                        <p>STORE</p>
+                        <p onClick={()=>{
+                            navigate('/shop');
+                            None();
+                        }}>STORE</p>
                         <p>ORDER</p>
                         <p>ABOUT OUS</p>
                         <p>PRESS</p>

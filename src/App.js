@@ -9,6 +9,7 @@ import Mainpage from './Route/Mainpage.js'
 import Footer from './Route/Footer.js';
 import Shop from './Route/Shop.js';
 import Detail from './Route/Detail.js';
+import Login from './Route/Login.js';
 
 function App() {
   let navigate = useNavigate();
@@ -22,6 +23,8 @@ function App() {
         <Route path='/' element={<Mainpage></Mainpage>} />
 
         <Route path='/shop' element={<Shop></Shop>} />
+
+        <Route path='/login' element={<Login></Login>} />
 
         <Route path='/:page' element={<Detail></Detail>} />
 

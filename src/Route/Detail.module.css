@@ -83,6 +83,10 @@ select {
     border: 1px solid;
     margin-right: 1px;
 }
+.goods {
+    margin-top: 30px;
+}
+
 
 .total {
     margin-top: 20px;

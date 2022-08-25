@@ -14,24 +14,7 @@ function Detail() {
 
     let a = useSelector((state) => { return state })
 
-    let arr = []
-    let newarr = arr.concat(a.dress, a.top, a.bottom, a.auter)
-
     let navigate = useNavigate();
-    console.log(page);
-
-    let [drop, setDrop] = useState('none')
-
-
-
-    function None() {
-        if (drop == 'none') {
-            setDrop('show')
-        } else if (drop == 'show') {
-            setDrop('none')
-        }
-    }
-
 
     function Filter() {
         let [opt, setOpt] = useState('none')
@@ -61,15 +44,6 @@ function Detail() {
         }
 
         let pp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
-        // var value = document.querySelectorAll('select')[1].value
-        // if (value == 'FREE'){
-        //     setOpt('show')
-        // }
-
-        function Opt() {
-            console.log(document.querySelectorAll('select')[1].value);
-        }
 
 
         return (
@@ -122,15 +96,18 @@ function Detail() {
                             if(value == 'FREE') {
                                 setOpt('show')
                             }
+                            if(value != 'FREE' ) {
+                                setOpt('none')
+                            }
                         }}>
                             <option value="">-[필수] 옵션을 선택해 주세요-</option>
-                            <option value="">----------------------------</option>
+                            <option value="" disabled>----------------------------</option>
                             <option  value="FREE">FREE</option>
                         </select>
                     </div>
 
                     <div className={cs('goods',`${opt}`)}>
-                        <p>{data[0].title}</p>
+                        <p style={{fontWeight : 'bold'}}>{data[0].title}</p>
                         <div className='flex'>
                             <p>Free</p>
                             <p style={{ marginLeft: 'auto' }}>{pp}원</p>
