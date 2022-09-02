@@ -15,12 +15,6 @@ import axios from 'axios';
 function App() {
   let navigate = useNavigate();
 
-  const sendRequest = async () => {
-    const response = await axios.get('http://localhost:8080');
-    console.log(response);
-    console.log(response.data);
-  };
-
 
   return (
     <div id='App' className='App'>
