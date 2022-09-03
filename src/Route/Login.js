@@ -16,13 +16,25 @@ function Login() {
                 <div className={cs('login-box')}>
                     <h1>LOGIN</h1>
                     <div className={cs('content')}>
-                        <input type='text' placeholder='아이디를 입력하세요.' />
-                        <input type='text' placeholder='비밀번호를 입력하세요.' />
+                        <input id='login-id' type='text' placeholder='아이디를 입력하세요.' />
+                        <input id='login-pw' type='text' placeholder='비밀번호를 입력하세요.' />
                     </div>
 
                     <div className={cs('login-btn')}>
                         <button id='login' onClick={() => {
+                            let local_id = window.localStorage.getItem('ID')
+                            let local_pw = window.localStorage.getItem('PW')
 
+                            let id = document.querySelector('#login-id').value;
+                            let pw = document.querySelector('#login-pw').value;
+
+                            if (local_id != id) {
+                                alert('아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다. \n입력하신 내용을 다시 확인해주세요.')
+                            } else if (local_pw != pw) {
+                                alert('아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다. \n입력하신 내용을 다시 확인해주세요.')
+                            } else {
+                                window.location.href = '/'
+                            }
                         }}>LOGIN</button>
                         <button id='joinus' onClick={() => {
                             if (join == 'none') {
@@ -91,7 +103,7 @@ function Login() {
                                 document.querySelector('#join-pw').value = '';
                                 document.querySelector('#join-name').value = '';
                                 document.querySelector('#join-phone').value = '';
-                                
+
                                 if (join == 'none') {
                                     setJoin('show')
                                 } else if (join == 'show') {
