@@ -12,10 +12,10 @@ function Login() {
             <div className={cs('login-box')}>
                 <h1>LOGIN</h1>
                 <div className={cs('content')}>
-                    <form>
+                    {/* <form> */}
                         <input type='text' placeholder='아이디를 입력하세요.' />
                         <input type='text' placeholder='비밀번호를 입력하세요.' />
-                    </form>
+                    {/* </form> */}
                 </div>
 
                 <div className={cs('login-btn')}>
@@ -24,8 +24,8 @@ function Login() {
                 </div>
 
                 <div className='flex' style={{ marginTop: '10px' }}>
-                    <p style={{ fontSize: '13px', marginRight: '10px' }}>*아이디 찾기</p>
-                    <p style={{ fontSize: '13px' }}>*비밀번호 찾기</p>
+                    <p style={{ fontSize: '13px', marginRight: '10px' }}>* 아이디 찾기</p>
+                    <p style={{ fontSize: '13px' }}>* 비밀번호 찾기</p>
                 </div>
             </div>
         </div>

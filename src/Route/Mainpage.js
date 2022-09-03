@@ -25,17 +25,6 @@ function Mainpage() {
     return (
         <div className={cs('main1')}>
 
-
-            <div className={cs('img-box')}>
-                <div className={cs('aa')}>
-                    <button onClick={() => {
-                        axios.get('https://codingapple1.github.io/shop/data2.json').then((결과) => {
-                            console.log(결과.data)
-                        })
-                    }}>VIEW</button>
-                </div>
-                <img src={process.env.PUBLIC_URL + '/img/aa.jpg'} />
-            </div>
             <div className={cs('img-box')}>
                 <div className={cs('aa')}>
                     <h1>NEW IN</h1>

@@ -11,20 +11,33 @@ app.use(cors());
 const MongoClient = require('mongodb').MongoClient;
 
 var db;
-app.listen(8080, function(){
-    console.log('listening on 8080');
+
+app.listen(8080, function () {
+    console.log('listening on 8080')
+    
 });
 
+app.get('/pet', (req,res)=> {
+    res.send('안녕하세요')
+})
+
+
 // MongoClient.connect('mongodb+srv://skdo223:apsode1@cluster0.udjmfja.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true }, function (에러, client) {
-// 	if (에러) return console.log(에러)
-// 	db = client.db('todoapp');
+//     if (에러) return console.log(에러)
+//     db = client.db('todoapp');
 
 
 
-// 	app.listen(8080, function () {
-// 		console.log('listening on 8080')
-// 	});
+//     app.listen(8080, function () {
+//         console.log('listening on 8080')
+        
+//     });
 // });
+
+
+app.get('/test', (req,res)=> {
+    res.sendFile
+})
 
 // app.get('localhost:3000/shop/aaa ', (req, res) => {
 
@@ -32,7 +45,6 @@ app.listen(8080, function(){
 // 		console.log('안녕');
 // 	})
 //   res.send(console.log('1234'))
-
 // })
 
 // app.delete('/shop', (req, res) => {
