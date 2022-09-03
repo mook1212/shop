@@ -86,14 +86,26 @@ function Login() {
                             else if (phone == '') {
                                 alert('전화번호를 입력해주세요.')
                             } else {
+
+                                document.querySelector('#join-id').value = '';
+                                document.querySelector('#join-pw').value = '';
+                                document.querySelector('#join-name').value = '';
+                                document.querySelector('#join-phone').value = '';
+                                
                                 if (join == 'none') {
                                     setJoin('show')
                                 } else if (join == 'show') {
                                     setJoin('none')
                                 }
                             }
+
                         }}>회원가입</button>
                         <button onClick={() => {
+                            document.querySelector('#join-id').value = '';
+                            document.querySelector('#join-pw').value = '';
+                            document.querySelector('#join-name').value = '';
+                            document.querySelector('#join-phone').value = '';
+
                             if (join == 'none') {
                                 setJoin('show')
                             } else if (join == 'show') {
