@@ -28,6 +28,7 @@ function Navb() {
 
         var afterPosition = document.documentElement.scrollTop;
 
+        // 스크롤 맨 위
         if (window.scrollY == 0) {
             document.getElementById('nav').style.backgroundColor = ''
         }
@@ -65,6 +66,11 @@ function Navb() {
         }
         beforePosition = afterPosition;
     });
+
+    let local_id = window.localStorage.getItem('ID')
+    let token = window.localStorage.getItem('token')
+    console.log(token);
+
 
     return (
         <>
@@ -115,10 +121,22 @@ function Navb() {
                         }} class="fa-solid fa-xmark"></i></p>
                     </div>
                     <div className={cs('my')}>
-                        <p onClick={()=>{
+                        {
+                            token === local_id
+                                ? <p onClick={() => {
+                                    window.localStorage.removeItem('token');
+                                    window.location.href = '/'
+                                }}>LOGOUT</p>
+                                : <p onClick={() => {
+                                    navigate('/login');
+                                    None();
+                                }}>SIGN IN</p>
+
+                        }
+                        {/* <p onClick={() => {
                             navigate('/login');
                             None();
-                        }}>SIGN IN</p>
+                        }}>SIGN IN</p> */}
                         <p>MYPAGE</p>
                     </div>
 
@@ -126,7 +144,7 @@ function Navb() {
                     <br></br>
 
                     <div>
-                        <p onClick={()=>{
+                        <p onClick={() => {
                             navigate('/shop');
                             None();
                         }}>STORE</p>
