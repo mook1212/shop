@@ -3,9 +3,11 @@ import classNames from 'classnames/bind'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Jdata from '../DB/data.json'
 import { createContext, useEffect, useState } from "react"
-import { Route, Routes, Link, useNavigate, Outlet, useParams } from 'react-router-dom'
+import { Route, Routes, Link, useNavigate, Outlet, useParams,Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import axios from 'axios'
+import { login_confirm } from '../재사용';
+import Mypage from './Mypage';
 const cs = classNames.bind(style);
 
 
@@ -125,7 +127,9 @@ function Detail() {
 
                     <div className={cs('buy')}>
                         <button>ADD CART</button>
-                        <button>BUY NOW</button>
+                        <button onClick={()=> {
+                            login_confirm('/mypage')
+                        }}>BUY NOW</button>
                     </div>
 
                 </div>

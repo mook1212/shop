@@ -11,6 +11,7 @@ import Shop from './Route/Shop.js';
 import Detail from './Route/Detail.js';
 import Login from './Route/Login.js';
 import axios from 'axios';
+import Mypage from './Route/Mypage';
 
 function App() {
   let navigate = useNavigate();
@@ -27,6 +28,8 @@ function App() {
         <Route path='/shop' element={<Shop></Shop>} />
 
         <Route path='/login' element={<Login></Login>} />
+
+        <Route path='/mypage' element={<Mypage></Mypage>} />
 
         <Route path='/:page' element={<Detail></Detail>} />
 

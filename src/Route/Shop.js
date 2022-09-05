@@ -6,6 +6,7 @@ import { createContext, useState } from "react"
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import axios from 'axios'
+import { login_confirm } from '../재사용';
 const cs = classNames.bind(style);
 // import Detail from './Detail.js'
 
@@ -27,16 +28,6 @@ function Shop() {
     let data = []
     let newdata = data.concat(Jdata.dress,Jdata.auter,Jdata.bottom,Jdata.top)
     console.log(newdata);
-
-    function A() {
-
-        return (
-            <>
-                <p>안녕</p>
-            </>
-        )
-
-    }
 
     function All() {
         let data = []

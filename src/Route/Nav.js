@@ -3,6 +3,7 @@ import classNames from 'classnames/bind'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createContext, useState } from "react"
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom'
+import { login_confirm } from '../재사용';
 const cs = classNames.bind(style);
 
 function Navb() {
@@ -133,11 +134,15 @@ function Navb() {
                                 }}>SIGN IN</p>
 
                         }
-                        {/* <p onClick={() => {
-                            navigate('/login');
-                            None();
-                        }}>SIGN IN</p> */}
-                        <p>MYPAGE</p>
+                        <p onClick={()=> {
+                            if(token === local_id) {
+                                navigate('mypage');
+                                None();
+                            } else {
+                                navigate('/login');
+                                None();
+                            }
+                        }}>MYPAGE</p>
                     </div>
 
                     <br></br>
