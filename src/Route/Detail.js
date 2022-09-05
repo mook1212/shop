@@ -3,8 +3,9 @@ import classNames from 'classnames/bind'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Jdata from '../DB/data.json'
 import { createContext, useEffect, useState } from "react"
-import { Route, Routes, Link, useNavigate, Outlet, useParams,Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { Route, Routes, Link, useNavigate, Outlet, useParams, Navigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { changetitle,changecount,changeimg,changeprice} from '../store';
 import axios from 'axios'
 import { login_confirm } from '../재사용';
 import Mypage from './Mypage';
@@ -14,18 +15,25 @@ const cs = classNames.bind(style);
 function Detail() {
     let { page } = useParams();
 
-    let a = useSelector((state) => { return state })
+    // let a = useSelector((state) => { return state })
 
     let navigate = useNavigate();
 
     function Filter() {
+
+        let a = useSelector((state) => { return state })
+        let dispatch = useDispatch()
+
         let [opt, setOpt] = useState('none')
 
+        // json 데이터를 받아와 하나의 어레이에 담는다
         let aa = []
         let newdata = aa.concat(Jdata.dress, Jdata.auter, Jdata.bottom, Jdata.top)
         console.log(newdata);
 
+        // 전체 어레이에서 현재 보고있는 상세페이지 데이터만 뽑아준다
         let data = newdata.filter(man => man.img == page)
+        console.log(data);
 
 
         let [count, setCount] = useState(1)
@@ -93,23 +101,23 @@ function Detail() {
                     </div> */}
 
                     <div className={cs('size-box')}>
-                        <select onChange={()=> {
+                        <select onChange={() => {
                             let value = document.querySelectorAll('select')[1].value
-                            if(value == 'FREE') {
+                            if (value == 'FREE') {
                                 setOpt('show')
                             }
-                            if(value != 'FREE' ) {
+                            if (value != 'FREE') {
                                 setOpt('none')
                             }
                         }}>
                             <option value="">-[필수] 옵션을 선택해 주세요-</option>
                             <option value="" disabled>----------------------------</option>
-                            <option  value="FREE">FREE</option>
+                            <option value="FREE">FREE</option>
                         </select>
                     </div>
 
-                    <div className={cs('goods',`${opt}`)}>
-                        <p style={{fontWeight : 'bold'}}>{data[0].title}</p>
+                    <div className={cs('goods', `${opt}`)}>
+                        <p style={{ fontWeight: 'bold' }}>{data[0].title}</p>
                         <div className='flex'>
                             <p>Free</p>
                             <p style={{ marginLeft: 'auto' }}>{pp}원</p>
@@ -123,13 +131,20 @@ function Detail() {
 
                     <div className={cs('total')}>
                         <p>TOTAL : {pp}원</p>
+                        <p>{a.barsket.price}원</p>
                     </div>
 
                     <div className={cs('buy')}>
-                        <button onClick={()=> {
+                        <button onClick={() => {
+                            let title = data[0].title
+                            let img = data[0].img
+                            let price = data[0].price
+                            dispatch(changeprice(price))
+                            dispatch(changeimg(img))
+                            dispatch(changetitle(title))
                             
                         }}>ADD CART</button>
-                        <button onClick={()=> {
+                        <button onClick={() => {
                             login_confirm('/mypage')
                         }}>BUY NOW</button>
                     </div>

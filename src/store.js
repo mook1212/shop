@@ -191,34 +191,35 @@ let barsket = createSlice({
     name: 'barsket',
     initialState: 
         {
-            title: '',
+            title: 'asdasd',
             price: '',
             img : '',
             count : ''
         },
     reducers : {
-        title(state,a) {
+        changetitle(state,a) {
             state.title = a.payload;
         },
-        price(state,a) {
+        changeprice(state,a) {
             state.price = a.payload;
         },
-        img(state,a) {
+        changeimg(state,a) {
             state.img = a.payload;
         },
-        count(state,a) {
+        changecount(state,a) {
             state.count = a.payload;
         },
     }
 })
 
-export let {title,price,img,count} = barsket.actions
+export let {changetitle,changeprice,changeimg,changecount} = barsket.actions
 
 export default configureStore({
     reducer: {
         dress: dress.reducer,
         top: top.reducer,
         auter: auter.reducer,
-        bottom: bottom.reducer
+        bottom: bottom.reducer,
+        barsket: barsket.reducer
     }
 }) 
