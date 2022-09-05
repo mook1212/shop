@@ -126,7 +126,9 @@ function Detail() {
                     </div>
 
                     <div className={cs('buy')}>
-                        <button>ADD CART</button>
+                        <button onClick={()=> {
+                            
+                        }}>ADD CART</button>
                         <button onClick={()=> {
                             login_confirm('/mypage')
                         }}>BUY NOW</button>

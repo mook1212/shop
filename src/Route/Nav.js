@@ -158,9 +158,15 @@ function Navb() {
                         <p>PRESS</p>
                     </div>
                     <div className={cs('sns')}>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-square-twitter"></i>
+                        <i onClick={()=> {
+                            window.location.href = 'https://www.instagram.com/'
+                        }} class="fa-brands fa-instagram"></i>
+                        <i onClick={()=> {
+                            window.location.href = 'https://ko-kr.facebook.com/'
+                        }} class="fa-brands fa-facebook"></i>
+                        <i onClick={()=> {
+                            window.location.href = 'https://twitter.com/?lang=ko'
+                        }} class="fa-brands fa-square-twitter"></i>
                     </div>
                 </div>
             </div>
