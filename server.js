@@ -54,13 +54,20 @@ app.get('/', (req,res)=> {
         console.log('저장완료');
     })
 })
+
 app.post('/barsket', (req,res)=> {
     db.collection('post').insertOne({title : req.body.title, img : req.body.img, price : req.body.price}, function(에러,결과) {
         console.log('저장완료');
     })
     res.send('전송완료')
     console.log(req.body);
-    // console.log('dkss');
+})
+
+app.get('/barsket', (req,res)=> {
+	db.collection('post').find().toArray((에러, 결과) => {
+		console.log(결과);
+        res.send(결과)
+	})
 })
 
 

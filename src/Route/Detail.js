@@ -150,12 +150,6 @@ function Detail() {
                                 .catch(function (error) {
                                     console.log(error);
                                 });
-                            // let count = 0
-                            // dispatch(changeimg(img))
-                            // dispatch(changetitle(title))
-                            // if (count = 0) {
-                            //     dispatch(changeprice(price))
-                            // }
 
                         }}>ADD CART</button>
                         <button onClick={() => {

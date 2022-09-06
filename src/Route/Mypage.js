@@ -13,25 +13,51 @@ const cs = classNames.bind(style);
 
 function Mypage() {
 
+
+    let [jdata, setJdata] = useState([])
+    useEffect(() => {
+        axios('http://localhost:8000/barsket')
+            .then(res => {
+                setJdata(res.data)
+                console.log('성공');
+                // console.log(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        console.log(jdata);
+    }, [])
+    console.log(jdata);
+    console.log(jdata[0].img);
+
     return (
         <div className={cs('main')}>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col"></th>
+                        <th scope="col">이미지</th>
+                        <th scope="col">상품정보</th>
+                        <th scope="col">가격</th>
+                        <th scope="col">수량</th>
+                        <th scope="col">배송비</th>
+                        <th scope="col">합계</th>
+                        <th scope="col">선택</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr className={cs('aa')}>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td>
+                            <img src={process.env.PUBLIC_URL + `/img/${jdata[0].img}.jpg`} />
+                        </td>
+                        <td>{jdata[0].title}</td>
+                        <td>{jdata[0].price}원</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
                         <td>@mdo</td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
@@ -41,7 +67,7 @@ function Mypage() {
                         <th scope="row">3</th>
                         <td colspan="2">Larry the Bird</td>
                         <td>@twitter</td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
         </div>
