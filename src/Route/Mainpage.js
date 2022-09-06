@@ -28,16 +28,6 @@ function Mainpage() {
             <div className={cs('img-box')}>
                 <div className={cs('aa')}>
                     <h1>NEW IN</h1>
-                    <button onClick={() => { 
-                        axios('http://localhost:8000')
-                        .then(res => console.log(res.data))
-                     }}>VIEW</button>
-                </div>
-                <img src={process.env.PUBLIC_URL + '/img/aa.jpg'} />
-            </div>
-            <div className={cs('img-box')}>
-                <div className={cs('aa')}>
-                    <h1>NEW IN</h1>
                     <p>Explore this week's latest collection of the season curated for you</p>
                     <button onClick={() => { navigate('/shop') }}>VIEW</button>
                 </div>

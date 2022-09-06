@@ -7,5 +7,11 @@ img {
 }
 .aa :nth-child(2) {
     width: 15%;
-    height: 130px;
+    height: 150px;
+}
+.aa :nth-child(3) {
+    width: 20%;
+}
+tr * {
+    text-align: center;
 }

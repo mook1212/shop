@@ -139,6 +139,7 @@ function Navb() {
                                 navigate('mypage');
                                 None();
                             } else {
+                                alert('로그인후 이용 가능합니다.')
                                 navigate('/login');
                                 None();
                             }

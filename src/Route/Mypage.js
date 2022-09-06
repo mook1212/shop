@@ -27,12 +27,10 @@ function Mypage() {
             })
         console.log(jdata);
     }, [])
-    console.log(jdata);
-    console.log(jdata[0].img);
 
     return (
         <div className={cs('main')}>
-            <table class="table">
+            <table className='table'>
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -45,31 +43,34 @@ function Mypage() {
                         <th scope="col">선택</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr className={cs('aa')}>
-                        <th scope="row">1</th>
-                        <td>
-                            <img src={process.env.PUBLIC_URL + `/img/${jdata[0].img}.jpg`} />
-                        </td>
-                        <td>{jdata[0].title}</td>
-                        <td>{jdata[0].price}원</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    {/* <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr> */}
-                </tbody>
             </table>
+            {
+                jdata != ''
+                    ? jdata.map((a, i) => {
+                        return (
+                            <table class="table">
+                                <tbody>
+                                    <tr className={cs('aa')}>
+                                        <th scope="row">{i + 1}</th>
+                                        <td>
+                                            <img src={process.env.PUBLIC_URL + `/img/${jdata[i].img}.jpg`} />
+                                        </td>
+                                        <td>{jdata[i].title}</td>
+                                        <td>{jdata[i].price}원</td>
+                                        <td>수량부분</td>
+                                        <td>무료</td>
+                                        <td>합계부분</td>
+                                        <td>@mdo</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        )
+                    })
+
+                    : <h1>장바구니 페이지</h1>
+            }
+
         </div>
     )
 }
