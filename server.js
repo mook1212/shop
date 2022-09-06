@@ -1,7 +1,25 @@
+// const express = require('express')
+// const app = express()
+// const port = 8000;
+// const cors = require('cors')
+
+// app.use(cors())
+
+// app.get('/', (req,res)=> {
+//     res.send('hello')
+// })
+
+// app.listen(port, ()=> {
+//     console.log(`${port} 포트에서 실행중`);
+// })
+
+
+
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({extended: true})) 
 const path = require('path');
 
 app.use(express.json());
@@ -12,32 +30,40 @@ const MongoClient = require('mongodb').MongoClient;
 
 var db;
 
-app.listen(8080, function () {
-    console.log('listening on 8080')
-    
+MongoClient.connect('mongodb+srv://skdo223:apsode1@cluster0.udjmfja.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true }, function (에러, client) {
+    if (에러) return console.log(에러)
+    db = client.db('todoapp');
+
+    // db.collection('post').insertOne({이름 : 'kim', 나이 : 20}, function(에러,결과) {
+    //     console.log('저장완료');
+    // })
+
+    app.listen(8000, function () {
+        console.log('listening on 8080')
+        
+    });
 });
 
-app.get('/pet', (req,res)=> {
-    res.send('안녕하세요')
+app.get('/', (req,res)=> {
+    res.send('hello')
 })
 
 
-// MongoClient.connect('mongodb+srv://skdo223:apsode1@cluster0.udjmfja.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true }, function (에러, client) {
-//     if (에러) return console.log(에러)
-//     db = client.db('todoapp');
-
-
-
-//     app.listen(8080, function () {
-//         console.log('listening on 8080')
-        
-//     });
-// });
-
-
-app.get('/test', (req,res)=> {
-    res.sendFile
+app.get('/', (req,res)=> {
+    db.collection('post').insertOne({이름 : 'kim', 나이 : 20}, function(에러,결과) {
+        console.log('저장완료');
+    })
 })
+app.post('/barsket', (req,res)=> {
+    db.collection('post').insertOne({title : req.body.title, img : req.body.img, price : req.body.price}, function(에러,결과) {
+        console.log('저장완료');
+    })
+    res.send('전송완료')
+    console.log(req.body);
+    // console.log('dkss');
+})
+
+
 
 // app.get('localhost:3000/shop/aaa ', (req, res) => {
 

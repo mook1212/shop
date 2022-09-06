@@ -5,7 +5,7 @@ import Jdata from '../DB/data.json'
 import { createContext, useEffect, useState } from "react"
 import { Route, Routes, Link, useNavigate, Outlet, useParams, Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { changetitle,changecount,changeimg,changeprice} from '../store';
+import { changetitle, changecount, changeimg, changeprice } from '../store';
 import axios from 'axios'
 import { login_confirm } from '../재사용';
 import Mypage from './Mypage';
@@ -135,14 +135,21 @@ function Detail() {
 
                     <div className={cs('buy')}>
                         <button onClick={() => {
-                            let title = data[0].title
-                            let img = data[0].img
-                            let price = data[0].price
+                            let Title = data[0].title
+                            let Img = data[0].img
+                            let Price = data[0].price
 
-                            let array1 = {title,img,price}
-                            let array2 = a.barsket
-                            let arr3 = [...array2, ...array1]
-                            console.log(arr3);
+                            axios.post('http://localhost:8000/barsket', {
+                                title: Title,
+                                img: Img,
+                                price: Price
+                            })
+                                .then(function (res) {
+                                    console.log(res);
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
                             // let count = 0
                             // dispatch(changeimg(img))
                             // dispatch(changetitle(title))
