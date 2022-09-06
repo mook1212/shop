@@ -11,7 +11,7 @@ function Footer() {
 
 
     return (
-        <div className='footer'>
+        <div className={cs('main')}>
             
             <div id='foo' className={cs('footer')}>
                 <div className={cs('foo1')}>

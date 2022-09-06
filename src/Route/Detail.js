@@ -131,7 +131,6 @@ function Detail() {
 
                     <div className={cs('total')}>
                         <p>TOTAL : {pp}원</p>
-                        <p>{a.barsket.price}원</p>
                     </div>
 
                     <div className={cs('buy')}>
@@ -139,10 +138,18 @@ function Detail() {
                             let title = data[0].title
                             let img = data[0].img
                             let price = data[0].price
-                            dispatch(changeprice(price))
-                            dispatch(changeimg(img))
-                            dispatch(changetitle(title))
-                            
+
+                            let array1 = {title,img,price}
+                            let array2 = a.barsket
+                            let arr3 = [...array2, ...array1]
+                            console.log(arr3);
+                            // let count = 0
+                            // dispatch(changeimg(img))
+                            // dispatch(changetitle(title))
+                            // if (count = 0) {
+                            //     dispatch(changeprice(price))
+                            // }
+
                         }}>ADD CART</button>
                         <button onClick={() => {
                             login_confirm('/mypage')
