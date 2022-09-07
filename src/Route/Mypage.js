@@ -27,6 +27,7 @@ function Mypage() {
             })
         console.log(jdata);
     }, [])
+    console.log(jdata);
 
     return (
         <div className={cs('main')}>
@@ -59,7 +60,19 @@ function Mypage() {
                                         <td>수량부분</td>
                                         <td>무료</td>
                                         <td>합계부분</td>
-                                        <td>@mdo</td>
+                                        <td>
+                                            <button onClick={() => {
+                                                var para = document.location.href.split("/");
+                                                console.log(para[3]);
+
+                                                let name = jdata[i].title
+                                                axios.delete('http://localhost:8000/mypage', {
+                                                    data: { title: name }
+                                                }).done(() => {
+
+                                                })
+                                            }}>x 삭제</button>
+                                        </td>
                                     </tr>
 
                                 </tbody>
@@ -70,37 +83,6 @@ function Mypage() {
                         : <h1>장바구니 페이지</h1>
                 }
             </table>
-
-            {/* <div className={cs('barsket-box')}>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style={{ width: '3%' }}></th>
-                            <th style={{ width: '20%' }}>이미지</th>
-                            <th style={{ width: '20%' }}>상품정보</th>
-                            <th>가격</th>
-                            <th>수량</th>
-                            <th>배송비</th>
-                            <th>합계</th>
-                            <th>선택</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style={{ width: '3%' }}>1</td>
-                            <td style={{ width: '15%' }}>
-                                <img src={process.env.PUBLIC_URL + `/img/${jdata[0].img}.jpg`} />
-                            </td>
-                            <td style={{ width: '15%' }}>상품정보</td>
-                            <td>123</td>
-                            <td>123</td>
-                            <td>123</td>
-                            <td>123</td>
-                            <td>123</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> */}
 
         </div>
     )

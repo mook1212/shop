@@ -70,7 +70,15 @@ app.get('/barsket', (req,res)=> {
 	})
 })
 
-
+app.delete('/mypage', (req, res) => {
+    console.log(req.body);
+	console.log('안녕'); // body는 ajax요청한 data값
+	// req.body._id = parseInt(req.body._id)
+	db.collection('post').deleteOne(req.body, (에러, 결과) => {
+		console.log('삭제완료');
+		res.status(200).send({ message: '성공했음' });
+	})
+})
 
 // app.get('localhost:3000/shop/aaa ', (req, res) => {
 
@@ -80,14 +88,7 @@ app.get('/barsket', (req,res)=> {
 //   res.send(console.log('1234'))
 // })
 
-// app.delete('/shop', (req, res) => {
-// 	console.log(req.body); // body는 ajax요청한 data값
-// 	req.body._id = parseInt(req.body._id)
-// 	db.collection('post').deleteOne(req.body, (에러, 결과) => {
-// 		console.log('삭제완료');
-// 		res.status(200).send({ message: '성공했음' });
-// 	})
-// })
+
 
 // app.get('*', function (요청, 응답) {
 //   응답.sendFile(path.join(__dirname, '/react-project/build/index.html'));

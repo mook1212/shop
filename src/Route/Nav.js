@@ -32,6 +32,9 @@ function Navb() {
         // 스크롤 맨 위
         if (window.scrollY == 0) {
             document.getElementById('nav').style.backgroundColor = ''
+            document.querySelector('a').style.color = 'black'
+            document.querySelector('nav i').style.color = 'black'
+            document.getElementById('basket').style.color = 'black'
         }
 
 

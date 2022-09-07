@@ -1,7 +1,7 @@
 import style from './Footer.module.css'
 import classNames from 'classnames/bind'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom'
 const cs = classNames.bind(style);
 
@@ -9,10 +9,23 @@ function Footer() {
 
     let navigate = useNavigate();
 
+    var para = document.location.href.split("/");
+
+    setTimeout(() => {
+        if(para[3] == 'mypage') {
+            document.getElementById('main-footer').style.position = 'relative'
+            document.getElementById('main-footer').style.bottom = '0'
+            document.getElementById('main-footer').style.width = '100%'
+        }
+    }, 1);
+
+    // useEffect(()=> {
+    // },[])
+
 
     return (
-        <div className={cs('main')}>
-            
+        <div id='main-footer' className={cs('main')}>
+
             <div id='foo' className={cs('footer')}>
                 <div className={cs('foo1')}>
                     <p>SHOP</p>
