@@ -2,7 +2,7 @@
     margin-top: 80px;
 }
 img {
-    width: 100%;
+    width: 80%;
     height: 100%;
 }
 .aa :nth-child(2) {
@@ -10,8 +10,23 @@ img {
     height: 150px;
 }
 .aa :nth-child(3) {
-    width: 20%;
+    align-items: center;
+    
+    width: 18%;
 }
 tr * {
     text-align: center;
+}
+table {
+    margin: auto;
+}
+td {
+    height: 150px;
+    vertical-align: middle;
+}
+
+.bb {
+    /* display: flex; */
+    /* align-items: center; */
+    /* width: 100%; */
 }

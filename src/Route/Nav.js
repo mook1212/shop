@@ -102,7 +102,14 @@ function Navb() {
                     </div>
 
                     <div className={cs('basket')}>
-                        <i id='basket' className="pointer fa-solid fa-basket-shopping"></i>
+                        <i id='basket' className="pointer fa-solid fa-basket-shopping" onClick={()=> {
+                            if(token === local_id) {
+                                navigate('mypage');
+                            } else {
+                                alert('로그인후 이용 가능합니다.')
+                                navigate('/login');
+                            }
+                        }}></i>
                     </div>
 
                 </nav>
