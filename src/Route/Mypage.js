@@ -25,7 +25,6 @@ function Mypage() {
         }, 1);
     }
 
-    console.log(aa);
 
     let [jdata, setJdata] = useState([])
     useEffect(() => {
@@ -40,11 +39,9 @@ function Mypage() {
             })
         console.log(jdata);
     }, [aa])
-    console.log(jdata);
+    // console.log(jdata[0].count);
 
-    function x() {
-        console.log('a');
-    }
+
 
 
     return (
@@ -65,10 +62,14 @@ function Mypage() {
                 {
                     jdata != ''
                         ? jdata.map((a, i) => {
+
+                            let pr = jdata[i].price
                             let price = jdata[i].price.toLocaleString('ko-KR')
                             let title = jdata[i].title
                             let count = jdata[i].count
                             let total = jdata[i].total.toLocaleString('ko-KR')
+                            let zz = count * pr
+                            console.log(count);
 
                             return (
                                 // <table class="table">
@@ -85,14 +86,26 @@ function Mypage() {
                                                 <input style={{ height: '30px' }} type="number" value={count} min="1" max="10" />
                                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                                     <button onClick={() => {
-                                                        // axios.put('http://localhost:8000/barsket-update', {
-                                                        //     tilte : name
-                                                        // })
+                                                        let to = (jdata[i].count + 1) * jdata[i].price
+
+                                                        axios.put('http://localhost:8000/barsket-update', {
+                                                            title: jdata[i].title,
+                                                            count: jdata[i].count + 1,
+                                                            total: to
+                                                        })
+                                                        re()
                                                     }}>+</button>
                                                     <button onClick={() => {
-                                                        // axios.put('http://localhost:8000/barsket-update', {
-                                                        //     tilte : name
-                                                        // })
+                                                        let to = (jdata[i].count - 1) * jdata[i].price
+                                                        console.log(to);
+                                                        if (count != 1) {
+                                                            axios.put('http://localhost:8000/barsket-update', {
+                                                                title: jdata[i].title,
+                                                                count: jdata[i].count - 1,
+                                                                total: to
+                                                            })
+                                                        }
+                                                        re()
                                                     }}>-</button>
                                                 </div>
                                             </div>

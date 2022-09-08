@@ -82,7 +82,9 @@ app.delete('/mypage', (req, res) => {
 
 app.put('/barsket-update', (req,res) => {
     console.log(req.body);
-    db.collection('post').updateOne(req.body,{$set : {title : '1'}}, (에러, 결과) => {
+    console.log(req.body.title);
+    console.log(req.body.count);
+    db.collection('post').updateOne({title : req.body.title},{$set : {count : req.body.count, total : req.body.total}}, (에러, 결과) => {
 		console.log('삭제완료');
 		res.status(200).send({ message: '성공했음' });
 	})
