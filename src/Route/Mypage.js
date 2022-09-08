@@ -13,7 +13,14 @@ const cs = classNames.bind(style);
 
 function Mypage() {
 
-
+    let [aa,setaa] = useState('1')
+    function a (){
+        if(aa = '1') {
+            setaa('0')
+        } else if (aa = '0') {
+            setaa('1')
+        }
+    } 
     let [jdata, setJdata] = useState([])
     useEffect(() => {
         axios('http://localhost:8000/barsket')
@@ -62,15 +69,18 @@ function Mypage() {
                                         <td>합계부분</td>
                                         <td>
                                             <button onClick={() => {
-                                                var para = document.location.href.split("/");
-                                                console.log(para[3]);
-
                                                 let name = jdata[i].title
-                                                axios.delete('http://localhost:8000/mypage', {
-                                                    data: { title: name }
-                                                }).done(() => {
 
+                                                // axios.delete('http://localhost:8000/mypage', {
+                                                //     data: { title: name }
+                                                // }).done(() => {
+
+                                                // })
+
+                                                axios.put('http://localhost:8000/barsket-update', {
+                                                    tilte : name
                                                 })
+                                                a()
                                             }}>x 삭제</button>
                                         </td>
                                     </tr>

@@ -80,6 +80,15 @@ app.delete('/mypage', (req, res) => {
 	})
 })
 
+
+app.put('/barsket-update', (req,res) => {
+    console.log(req.body);
+    db.collection('post').updateOne(req.body,{$set : {title : '1'}}, (에러, 결과) => {
+		console.log('삭제완료');
+		res.status(200).send({ message: '성공했음' });
+	})
+})
+
 // app.get('localhost:3000/shop/aaa ', (req, res) => {
 
 // 	db.collection('post').find().toArray((에러, 결과) => {
