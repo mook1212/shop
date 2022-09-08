@@ -56,7 +56,7 @@ app.get('/', (req,res)=> {
 })
 
 app.post('/barsket', (req,res)=> {
-    db.collection('post').insertOne({title : req.body.title, img : req.body.img, price : req.body.price, count : req.body.count}, function(에러,결과) {
+    db.collection('post').insertOne({title : req.body.title, img : req.body.img, price : req.body.price, count : req.body.count, total : req.body.total}, function(에러,결과) {
         console.log('저장완료');
     })
     res.send('전송완료')

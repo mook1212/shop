@@ -65,6 +65,11 @@ function Mypage() {
                 {
                     jdata != ''
                         ? jdata.map((a, i) => {
+                            let price = jdata[i].price.toLocaleString('ko-KR')
+                            let title = jdata[i].title
+                            let count = jdata[i].count
+                            let total = jdata[i].total.toLocaleString('ko-KR')
+
                             return (
                                 // <table class="table">
                                 <tbody>
@@ -73,21 +78,35 @@ function Mypage() {
                                         <td>
                                             <img src={process.env.PUBLIC_URL + `/img/${jdata[i].img}.jpg`} />
                                         </td>
-                                        <td >{jdata[i].title}</td>
-                                        <td>{jdata[i].price}원</td>
-                                        <td>수량부분</td>
-                                        <td>무료</td>
-                                        <td onClick={() => { x() }}>합계부분</td>
+                                        <td >{title}</td>
+                                        <td>{price}원</td>
                                         <td>
+                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                <input style={{ height: '30px' }} type="number" value={count} min="1" max="10" />
+                                                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                                    <button onClick={() => {
+                                                        // axios.put('http://localhost:8000/barsket-update', {
+                                                        //     tilte : name
+                                                        // })
+                                                    }}>+</button>
+                                                    <button onClick={() => {
+                                                        // axios.put('http://localhost:8000/barsket-update', {
+                                                        //     tilte : name
+                                                        // })
+                                                    }}>-</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>무료</td>
+                                        <td >{total}원</td>
+                                        <td className={cs('delete')}>
                                             <button id='x' onClick={() => {
                                                 let name = jdata[i].title
 
                                                 axios.delete('http://localhost:8000/mypage', {
                                                     data: { title: name }
                                                 })
-                                                // axios.put('http://localhost:8000/barsket-update', {
-                                                //     tilte : name
-                                                // })
+
                                                 re()
 
                                             }}>x 삭제</button>

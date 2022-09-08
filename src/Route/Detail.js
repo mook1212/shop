@@ -135,17 +135,19 @@ function Detail() {
 
                     <div className={cs('buy')}>
                         <button onClick={() => {
-                            let cou = count
+                            let Count = count
                             let Title = data[0].title
                             let Img = data[0].img
                             let Price = parseInt(data[0].price)
+                            let Total = Count * Price 
                             
 
                             axios.post('http://localhost:8000/barsket', {
                                 title: Title,
                                 img: Img,
                                 price: Price,
-                                count : cou
+                                count : Count,
+                                total : Total 
                             })
                                 .then(function (res) {
                                     console.log(res);
