@@ -13,14 +13,20 @@ const cs = classNames.bind(style);
 
 function Mypage() {
 
-    let [aa,setaa] = useState('1')
-    function a (){
-        if(aa = '1') {
-            setaa('0')
-        } else if (aa = '0') {
-            setaa('1')
-        }
-    } 
+    let [aa, setaa] = useState('0')
+
+    function re() {
+        setTimeout(() => {
+            if (aa == '0') {
+                setaa('1')
+            } else if (aa == '1') {
+                setaa('0')
+            }
+        }, 1);
+    }
+
+    console.log(aa);
+
     let [jdata, setJdata] = useState([])
     useEffect(() => {
         axios('http://localhost:8000/barsket')
@@ -33,8 +39,13 @@ function Mypage() {
                 console.log(error);
             })
         console.log(jdata);
-    }, [])
+    }, [aa])
     console.log(jdata);
+
+    function x() {
+        console.log('a');
+    }
+
 
     return (
         <div className={cs('main')}>
@@ -66,21 +77,19 @@ function Mypage() {
                                         <td>{jdata[i].price}원</td>
                                         <td>수량부분</td>
                                         <td>무료</td>
-                                        <td>합계부분</td>
+                                        <td onClick={() => { x() }}>합계부분</td>
                                         <td>
-                                            <button onClick={() => {
+                                            <button id='x' onClick={() => {
                                                 let name = jdata[i].title
 
-                                                // axios.delete('http://localhost:8000/mypage', {
-                                                //     data: { title: name }
-                                                // }).done(() => {
-
-                                                // })
-
-                                                axios.put('http://localhost:8000/barsket-update', {
-                                                    tilte : name
+                                                axios.delete('http://localhost:8000/mypage', {
+                                                    data: { title: name }
                                                 })
-                                                a()
+                                                // axios.put('http://localhost:8000/barsket-update', {
+                                                //     tilte : name
+                                                // })
+                                                re()
+
                                             }}>x 삭제</button>
                                         </td>
                                     </tr>

@@ -56,7 +56,7 @@ app.get('/', (req,res)=> {
 })
 
 app.post('/barsket', (req,res)=> {
-    db.collection('post').insertOne({title : req.body.title, img : req.body.img, price : req.body.price}, function(에러,결과) {
+    db.collection('post').insertOne({title : req.body.title, img : req.body.img, price : req.body.price, count : req.body.count}, function(에러,결과) {
         console.log('저장완료');
     })
     res.send('전송완료')
@@ -72,7 +72,6 @@ app.get('/barsket', (req,res)=> {
 
 app.delete('/mypage', (req, res) => {
     console.log(req.body);
-	console.log('안녕'); // body는 ajax요청한 data값
 	// req.body._id = parseInt(req.body._id)
 	db.collection('post').deleteOne(req.body, (에러, 결과) => {
 		console.log('삭제완료');
@@ -88,6 +87,8 @@ app.put('/barsket-update', (req,res) => {
 		res.status(200).send({ message: '성공했음' });
 	})
 })
+
+
 
 // app.get('localhost:3000/shop/aaa ', (req, res) => {
 

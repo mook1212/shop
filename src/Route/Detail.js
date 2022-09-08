@@ -123,7 +123,7 @@ function Detail() {
                             <p style={{ marginLeft: 'auto' }}>{pp}원</p>
                         </div>
                         <div className={cs('count')}>
-                            <input type="number" value={count} min="1" max="10" />
+                            <input id='item-count' type="number" value={count} min="1" max="10" />
                             <button onClick={() => { Countplus() }} style={{ marginLeft: '10px' }}>+</button>
                             <button onClick={() => { Countdown() }}>-</button>
                         </div>
@@ -135,14 +135,17 @@ function Detail() {
 
                     <div className={cs('buy')}>
                         <button onClick={() => {
+                            let cou = count
                             let Title = data[0].title
                             let Img = data[0].img
-                            let Price = data[0].price
+                            let Price = parseInt(data[0].price)
+                            
 
                             axios.post('http://localhost:8000/barsket', {
                                 title: Title,
                                 img: Img,
-                                price: Price
+                                price: Price,
+                                count : cou
                             })
                                 .then(function (res) {
                                     console.log(res);
