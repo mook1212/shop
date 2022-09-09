@@ -29,11 +29,9 @@ function Detail() {
         // json 데이터를 받아와 하나의 어레이에 담는다
         let aa = []
         let newdata = aa.concat(Jdata.dress, Jdata.auter, Jdata.bottom, Jdata.top)
-        console.log(newdata);
 
         // 전체 어레이에서 현재 보고있는 상세페이지 데이터만 뽑아준다
         let data = newdata.filter(man => man.img == page)
-        console.log(data);
 
 
         let [count, setCount] = useState(1)
@@ -55,32 +53,71 @@ function Detail() {
 
         let pp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
+        // 장바구니
+        let Count = count
+        let Title = data[0].title
+        let Img = data[0].img
+        let Price = parseInt(data[0].price)
+        let Total = Count * Price
+
+        // 장바구니DB에 있는 데이터 조회
+        let [dbdata, setDBdata] = useState('')
+
+        // useEffect(() => {
+        //     axios.get('http://localhost:8000/barsket')
+        //         .then(res => setDBdata(res.data))
+        //         .catch(() => {
+        //             console.log("실패");
+        //         });
+
+
+        // }, [])
+
+
+
         /**장바구니에 담아주는 함수 */
         function add_cart() {
-            let Count = count
-            let Title = data[0].title
-            let Img = data[0].img
-            let Price = parseInt(data[0].price)
-            let Total = Count * Price 
-            var dbdata
 
-            let bbb = axios.get('http://localhost:8000/barsket')
-            .then(res => dbdata = res.data)
-            console.log(dbdata);
+            if (opt == 'none') {
+                alert('옵션을 선택해주세요')
+            } else if (opt != 'none') {
+                console.log(123);
+                // axios.get('http://localhost:8000/barsket')
+                //     .then(res => setDBdata(res.data))
+                //     .catch(() => {
+                //         console.log("실패");
+                //     });
+            }
+            // let DBfilter = dbdata.filter(man => man.title == Title)
+            // console.log(DBfilter);
 
-            // axios.post('http://localhost:8000/barsket', {
-            //     title: Title,
-            //     img: Img,
-            //     price: Price,
-            //     count : Count,
-            //     total : Total 
-            // })
-            //     .then(function (res) {
-            //         console.log(res);
+
+            // if (DBfilter.ength == 0) {
+            // }
+            // let filter_Title = DBfilter[0].title
+            // console.log(filter_Title);
+
+            // if(opt == 'none') {
+            //     alert('옵션을 선택해주세요')
+            // }
+            // else if(filter_Title == Title) {
+            //     alert('이미있음')
+            // } else {
+            //     axios.post('http://localhost:8000/barsket', {
+            //         title: Title,
+            //         img: Img,
+            //         price: Price,
+            //         count: Count,
+            //         total: Total
             //     })
-            //     .catch(function (error) {
-            //         console.log(error);
-            //     });
+            //         .then(function (res) {
+            //             console.log(res);
+            //         })
+            //         .catch(() => {
+            //             console.log("실패");
+            //         });
+            // }
+
         }
 
 
@@ -162,10 +199,9 @@ function Detail() {
                     </div>
 
                     <div className={cs('buy')}>
-                        {/* <button onClick={() => { add_cart() }}>ADD CART</button> */}
+                        <button onClick={() => { add_cart() }}>ADD CART</button>
                         <button onClick={() => {
-                            // login_confirm('/mypage')
-                            add_cart()
+                            login_confirm('/mypage')
                         }}>BUY NOW</button>
                     </div>
 

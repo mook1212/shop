@@ -1,19 +1,3 @@
-// const express = require('express')
-// const app = express()
-// const port = 8000;
-// const cors = require('cors')
-
-// app.use(cors())
-
-// app.get('/', (req,res)=> {
-//     res.send('hello')
-// })
-
-// app.listen(port, ()=> {
-//     console.log(`${port} 포트에서 실행중`);
-// })
-
-
 
 
 const express = require('express');
@@ -70,6 +54,7 @@ app.get('/barsket', (req,res)=> {
         // console.log(결과);
         res.send(결과)
     })
+    console.log('1');
 
 })
 
