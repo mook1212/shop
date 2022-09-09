@@ -77,19 +77,24 @@ function Detail() {
 
         /**장바구니에 담아주는 함수 */
         function add_cart() {
+            let DBfilter;
 
             if (opt == 'none') {
                 alert('옵션을 선택해주세요')
             } else if (opt != 'none') {
-                console.log(123);
-                // axios.get('http://localhost:8000/barsket')
-                //     .then(res => setDBdata(res.data))
-                //     .catch(() => {
-                //         console.log("실패");
-                //     });
-            }
-            // let DBfilter = dbdata.filter(man => man.title == Title)
-            // console.log(DBfilter);
+                axios.get('http://localhost:8000/barsket')
+                .then(res =>
+                    setDBdata(res.data),
+                    console.log('성공'))
+                .catch(() => {
+                    console.log("실패");
+                });
+                let DBfilter = dbdata.filter(man => man.title == Title)
+                console.log(DBfilter);
+                if(DBfilter.length) {
+                    console.log(1234);
+                }
+            } 
 
 
             // if (DBfilter.ength == 0) {
