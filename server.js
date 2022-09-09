@@ -63,13 +63,17 @@ app.post('/barsket', (req,res)=> {
     console.log(req.body);
 })
 
+// 장바구니에 아이탬이 있는지 조회
 app.get('/barsket', (req,res)=> {
-	db.collection('post').find().toArray((에러, 결과) => {
-		console.log(결과);
+
+    db.collection('post').find().toArray((에러, 결과) => {
+        // console.log(결과);
         res.send(결과)
-	})
+    })
+
 })
 
+// 장바구니에 정보 삭제
 app.delete('/mypage', (req, res) => {
     console.log(req.body);
 	// req.body._id = parseInt(req.body._id)
@@ -79,7 +83,7 @@ app.delete('/mypage', (req, res) => {
 	})
 })
 
-
+// 장바구니 정보 수정
 app.put('/barsket-update', (req,res) => {
     console.log(req.body);
     console.log(req.body.title);

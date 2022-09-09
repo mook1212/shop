@@ -55,6 +55,34 @@ function Detail() {
 
         let pp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
+        /**장바구니에 담아주는 함수 */
+        function add_cart() {
+            let Count = count
+            let Title = data[0].title
+            let Img = data[0].img
+            let Price = parseInt(data[0].price)
+            let Total = Count * Price 
+            var dbdata
+
+            let bbb = axios.get('http://localhost:8000/barsket')
+            .then(res => dbdata = res.data)
+            console.log(dbdata);
+
+            // axios.post('http://localhost:8000/barsket', {
+            //     title: Title,
+            //     img: Img,
+            //     price: Price,
+            //     count : Count,
+            //     total : Total 
+            // })
+            //     .then(function (res) {
+            //         console.log(res);
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+        }
+
 
         return (
             <>
@@ -134,31 +162,10 @@ function Detail() {
                     </div>
 
                     <div className={cs('buy')}>
+                        {/* <button onClick={() => { add_cart() }}>ADD CART</button> */}
                         <button onClick={() => {
-                            let Count = count
-                            let Title = data[0].title
-                            let Img = data[0].img
-                            let Price = parseInt(data[0].price)
-                            let Total = Count * Price 
-                            
-
-                            axios.post('http://localhost:8000/barsket', {
-                                title: Title,
-                                img: Img,
-                                price: Price,
-                                count : Count,
-                                total : Total 
-                            })
-                                .then(function (res) {
-                                    console.log(res);
-                                })
-                                .catch(function (error) {
-                                    console.log(error);
-                                });
-
-                        }}>ADD CART</button>
-                        <button onClick={() => {
-                            login_confirm('/mypage')
+                            // login_confirm('/mypage')
+                            add_cart()
                         }}>BUY NOW</button>
                     </div>
 
