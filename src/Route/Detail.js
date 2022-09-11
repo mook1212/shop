@@ -60,68 +60,58 @@ function Detail() {
         let Price = parseInt(data[0].price)
         let Total = Count * Price
 
+
         // 장바구니DB에 있는 데이터 조회
-        let [dbdata, setDBdata] = useState('')
 
-        // useEffect(() => {
-        //     axios.get('http://localhost:8000/barsket')
-        //         .then(res => setDBdata(res.data))
-        //         .catch(() => {
-        //             console.log("실패");
-        //         });
+        let [alertTxt, setAlertText] = useState('none')
+        let [dbdata, setDBdata] = useState([])
+        let [filter, setFilter] = useState('')
 
+        useEffect(() => {
+            axios.get('http://localhost:8000/barsket')
+                .then(res => {
+                    const DBfilter = res.data.filter((data) => {
+                        return data.title === Title
+                    })
+                    setFilter(DBfilter)
+                })
+                .catch(() => {
+                    console.log("실패");
+                });
+        }, [alertTxt])
 
-        // }, [])
+        useEffect(() => {
+            console.log(filter)
+        }, [filter])
+        console.log(filter);
 
 
 
         /**장바구니에 담아주는 함수 */
         function add_cart() {
-            let DBfilter;
 
             if (opt == 'none') {
                 alert('옵션을 선택해주세요')
-            } else if (opt != 'none') {
-                axios.get('http://localhost:8000/barsket')
-                .then(res =>
-                    setDBdata(res.data),
-                    console.log('성공'))
-                .catch(() => {
-                    console.log("실패");
-                });
-                let DBfilter = dbdata.filter(man => man.title == Title)
-                console.log(DBfilter);
-                if(DBfilter.length) {
-                    console.log(1234);
-                }
-            } 
-
-
-            // if (DBfilter.ength == 0) {
-            // }
-            // let filter_Title = DBfilter[0].title
-            // console.log(filter_Title);
-
-            // if(opt == 'none') {
-            //     alert('옵션을 선택해주세요')
-            // }
-            // else if(filter_Title == Title) {
-            //     alert('이미있음')
-            // } else {
-            //     axios.post('http://localhost:8000/barsket', {
-            //         title: Title,
-            //         img: Img,
-            //         price: Price,
-            //         count: Count,
-            //         total: Total
-            //     })
-            //         .then(function (res) {
-            //             console.log(res);
-            //         })
-            //         .catch(() => {
-            //             console.log("실패");
-            //         });
-            // }
+            } else if (filter.length == 0) {
+                setAlertText('상품 저장완료')
+                alert(alertTxt)
+                axios.post('http://localhost:8000/barsket', {
+                    title: Title,
+                    img: Img,
+                    price: Price,
+                    count: Count,
+                    total: Total
+                })
+                    .then(function (res) {
+                        console.log(res);
+                    })
+                    .catch(() => {
+                        console.log("실패");
+                    });
+            } else if (filter.length != 0) {
+                setAlertText('이미 장바구니에 있는 상품입니다.')
+                alert(alertTxt)
+            }
 
         }
 
