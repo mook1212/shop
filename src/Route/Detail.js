@@ -25,6 +25,8 @@ function Detail() {
         let dispatch = useDispatch()
 
         let [opt, setOpt] = useState('none')
+        let [addcart, setCart] = useState('none')
+        let [addcart_txt, setAddCart_txt] = useState('')
 
         // json 데이터를 받아와 하나의 어레이에 담는다
         let aa = []
@@ -78,7 +80,7 @@ function Detail() {
                 .catch(() => {
                     console.log("실패");
                 });
-        }, [alertTxt])
+        }, [addcart])
 
         useEffect(() => {
             console.log(filter)
@@ -93,8 +95,7 @@ function Detail() {
             if (opt == 'none') {
                 alert('옵션을 선택해주세요')
             } else if (filter.length == 0) {
-                setAlertText('상품 저장완료')
-                alert(alertTxt)
+                setAddCart_txt('장바구니에 저장 완료')
                 axios.post('http://localhost:8000/barsket', {
                     title: Title,
                     img: Img,
@@ -108,9 +109,10 @@ function Detail() {
                     .catch(() => {
                         console.log("실패");
                     });
+                setCart('show')
             } else if (filter.length != 0) {
-                setAlertText('이미 장바구니에 있는 상품입니다.')
-                alert(alertTxt)
+                setCart('show')
+                setAddCart_txt('이미 장바구니에 동일한 상품이 존재합니다.')
             }
 
         }
@@ -199,6 +201,20 @@ function Detail() {
                             login_confirm('/mypage')
                         }}>BUY NOW</button>
                     </div>
+
+                    <div className={cs(`dropdown-cart` , `${addcart}`)}>
+                        <div className={cs('cart-modal')}>
+                            <h1 >{addcart_txt}</h1>
+                            <button style={{ marginTop: '20px' }} onClick={() => {
+                                if (addcart == 'none') {
+                                    setCart('show')
+                                } else if (addcart == 'show') {
+                                    setCart('none')
+                                }
+                            }}>확인</button>
+                        </div>
+                    </div>
+
 
                 </div>
             </>
