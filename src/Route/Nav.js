@@ -105,8 +105,8 @@ function Navb() {
                     </div>
 
                     <div className={cs('basket')}>
-                        <i id='basket' className="pointer fa-solid fa-basket-shopping" onClick={()=> {
-                            if(token === local_id) {
+                        <i id='basket' className="pointer fa-solid fa-basket-shopping" onClick={() => {
+                            if (token === local_id) {
                                 navigate('mypage');
                             } else {
                                 alert('로그인후 이용 가능합니다.')
@@ -144,8 +144,8 @@ function Navb() {
                                 }}>SIGN IN</p>
 
                         }
-                        <p onClick={()=> {
-                            if(token === local_id) {
+                        <p onClick={() => {
+                            if (token === local_id) {
                                 navigate('mypage');
                                 None();
                             } else {
@@ -164,18 +164,21 @@ function Navb() {
                             navigate('/shop');
                             None();
                         }}>STORE</p>
-                        <p>ORDER</p>
+                        <p onClick={() => {
+                            navigate('/shop');
+                            None();
+                        }}>ORDER</p>
                         <p>ABOUT OUS</p>
                         <p>PRESS</p>
                     </div>
                     <div className={cs('sns')}>
-                        <i onClick={()=> {
+                        <i onClick={() => {
                             window.location.href = 'https://www.instagram.com/'
                         }} class="fa-brands fa-instagram"></i>
-                        <i onClick={()=> {
+                        <i onClick={() => {
                             window.location.href = 'https://ko-kr.facebook.com/'
                         }} class="fa-brands fa-facebook"></i>
-                        <i onClick={()=> {
+                        <i onClick={() => {
                             window.location.href = 'https://twitter.com/?lang=ko'
                         }} class="fa-brands fa-square-twitter"></i>
                     </div>

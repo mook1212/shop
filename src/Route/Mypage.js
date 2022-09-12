@@ -15,6 +15,7 @@ function Mypage() {
 
     let [aa, setaa] = useState('0')
 
+
     function re() {
         setTimeout(() => {
             if (aa == '0') {
@@ -43,10 +44,9 @@ function Mypage() {
 
 
 
-
     return (
         <div className={cs('main')}>
-            <table className='table'>
+            <table className={cs('table')}>
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -127,13 +127,32 @@ function Mypage() {
                                     </tr>
 
                                 </tbody>
-                                // </table>
                             )
                         })
 
                         : <h1>장바구니 페이지</h1>
                 }
             </table>
+
+            <div className={cs('total-cart')}>
+                <div className={cs('order')}>
+
+                    <p>총 상품 개수 : {jdata.length}개</p>
+                    <p>배송료 : 무료 </p>
+                    <p>합계 금액 : {
+                        jdata.map((a, i) => {
+                            let qq;
+                            let tt = parseInt(jdata[i].total)
+                            qq += tt
+                            console.log(tt);
+                            return (
+                                qq
+                            )
+                        })
+                    }</p>
+                    <button>구매하기</button>
+                </div>
+            </div>
 
         </div>
     )
