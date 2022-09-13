@@ -34,11 +34,15 @@ function Mypage() {
             .then(res => {
                 setJdata(res.data)
                 console.log('성공');
-                let qq= 0;
-                res.data.forEach((a,i) => {
-                    qq += a.total
-                    setTotal_price(qq.toLocaleString('ko-KR'))
-                });
+                let qq = 0;
+                if (res.data.length == 0) {
+                    setTotal_price(0)
+                } else {
+                    res.data.forEach((a, i) => {
+                        qq += a.total
+                        setTotal_price(qq.toLocaleString('ko-KR'))
+                    });
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -46,7 +50,11 @@ function Mypage() {
         console.log(jdata);
     }, [aa])
 
-    
+    // if(jdata.length == 0) {
+    //     setTotal_price(0)
+    // }
+
+
 
 
     return (
@@ -142,8 +150,7 @@ function Mypage() {
             <div className={cs('total-cart')}>
                 <div className={cs('order')}>
 
-                    <p>총 상품 개수 : {jdata.length}개</p>
-                    <p>배송료 : 무료 </p>
+                    <p>배송비 : 무료 </p>
                     <p>합계 금액 : {total_price}원</p>
                     <button>구매하기</button>
                 </div>
