@@ -89,13 +89,9 @@ function Navb() {
                             if (drop == 'none') {
                                 document.body.classList.add("stop-scroll");
                                 setDrop('show')
-                                // document.querySelector('.App').style.marginLeft = '60%'
-                                // document.getElementById('nav').style.marginLeft = '60%'
                             } else if (drop == 'show') {
                                 document.body.classList.remove("stop-scroll");
                                 setDrop('none')
-                                // document.querySelector('.App').style.marginLeft = '0px'
-                                // document.getElementById('nav').style.marginLeft = '0px'
                             }
                         }} className="pointer fa-solid fa-bars"></i>
                     </div>
@@ -106,12 +102,14 @@ function Navb() {
 
                     <div className={cs('basket')}>
                         <i id='basket' className="pointer fa-solid fa-basket-shopping" onClick={() => {
-                            if (token === local_id) {
-                                navigate('mypage');
-                            } else {
-                                alert('로그인후 이용 가능합니다.')
-                                navigate('/login');
-                            }
+                            // if (token === local_id) {
+                            //     navigate('mypage');
+                            // } else {
+                            //     alert('로그인후 이용 가능합니다.')
+                            //     navigate('/login');
+                            // }
+                            navigate('/mypage');
+                            None();
                         }}></i>
                     </div>
 
@@ -169,8 +167,11 @@ function Navb() {
                             navigate('/mypage');
                             None();
                         }}>ORDER</p>
-                        <p>ABOUT OUS</p>
-                        <p>PRESS</p>
+                        {/* <p onClick={() => {
+                            navigate('/about');
+                            None();
+                        }}>ABOUT US</p>
+                        <p>PRESS</p> */}
                     </div>
                     <div className={cs('sns')}>
                         <i onClick={() => {

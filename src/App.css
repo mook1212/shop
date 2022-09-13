@@ -2,7 +2,9 @@
   /* overflow-x: hidden; */
   height: 100%;
 }
-
+* {
+  margin: 0px;
+}
 
 html * {
   margin: 0px;
@@ -18,11 +20,11 @@ li {
   list-style: none;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
+/* input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
 .pointer {
   cursor: pointer;

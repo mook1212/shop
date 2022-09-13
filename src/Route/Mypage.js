@@ -44,33 +44,17 @@ function Mypage() {
                         setTotal_price(qq.toLocaleString('ko-KR'))
                     });
                 }
-
-                // 장바구니 footer
-                // if(res.data.length < 3) {
-                //     document.getElementById('main-footer').style.position = 'absolute'
-                //     document.getElementById('main-footer').style.width = '100%'
-                //     document.getElementById('main-footer').style.bottom = '0'
-                // } else if (res.data.length >= 3) {
-                //     document.getElementById('main-footer').style.position = ''
-                //     document.getElementById('main-footer').style.width = ''
-                //     document.getElementById('main-footer').style.bottom = ''
-                // }
             })
             .catch((error) => {
                 console.log(error);
             })
     }, [aa])
 
-    // if(jdata.length == 0) {
-    //     setTotal_price(0)
-    // }
-
-
 
 
     return (
         <div className={cs('main')}>
-            <table className={cs('table')}>
+            {/* <table className={cs('table')}>
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -83,7 +67,84 @@ function Mypage() {
                         <th scope="col">선택</th>
                     </tr>
                 </thead>
-                {
+            </table> */}
+
+            <div>
+                <h3>SHOPPING CART ITEMS</h3>
+            </div>
+
+
+
+            {
+                jdata != ''
+                    ? jdata.map((a, i) => {
+
+                        let pr = jdata[i].price
+                        let price = jdata[i].price.toLocaleString('ko-KR')
+                        let title = jdata[i].title
+                        let count = jdata[i].count
+                        let total = jdata[i].total.toLocaleString('ko-KR')
+                        let zz = count * pr
+                        console.log(count);
+
+                        return (
+                            // <table class="table">
+
+                            <div className={cs('barsket')}>
+                                <div className={cs('item-img')}>
+                                    <img src={process.env.PUBLIC_URL + `/img/about.jpg`} />
+                                </div>
+                                <p>{title}</p>
+                                <p>{price}원</p>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <input style={{ height: '30px' }} type="number" value={count} min="1" max="10" />
+                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <button onClick={() => {
+                                            let to = (jdata[i].count + 1) * jdata[i].price
+
+                                            axios.put('http://localhost:8000/barsket-update', {
+                                                title: jdata[i].title,
+                                                count: jdata[i].count + 1,
+                                                total: to
+                                            })
+                                            re()
+                                        }}>+</button>
+                                        <button onClick={() => {
+                                            let to = (jdata[i].count - 1) * jdata[i].price
+                                            console.log(to);
+                                            if (count != 1) {
+                                                axios.put('http://localhost:8000/barsket-update', {
+                                                    title: jdata[i].title,
+                                                    count: jdata[i].count - 1,
+                                                    total: to
+                                                })
+                                            }
+                                            re()
+                                        }}>-</button>
+                                    </div>
+                                </div>
+                                {/* <p>배송비 : 무료</p> */}
+                                <p style={{margin : '10px'}}>합계 : {total}원</p>
+                                <div className={cs('delete')}>
+                                    <button id='x' onClick={() => {
+                                        let name = jdata[i].title
+
+                                        axios.delete('http://localhost:8000/mypage', {
+                                            data: { title: name }
+                                        })
+
+                                        re()
+
+                                    }}>x 삭제</button>
+                                </div>
+
+                            </div>
+                        )
+                    })
+                    : <h3 style={{margin : '15px'}}>* 장바구니에 담은 상품이 존재하지 않습니다.</h3>
+            }
+
+            {/* {
                     jdata != ''
                         ? jdata.map((a, i) => {
 
@@ -152,11 +213,7 @@ function Mypage() {
 
                                 </tbody>
                             )
-                        })
-
-                        : null
-                }
-            </table>
+                        }) */}
 
             <div className={cs('total-cart')}>
                 <div className={cs('order')}>

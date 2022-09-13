@@ -10,6 +10,7 @@ import Footer from './Route/Footer.js';
 import Shop from './Route/Shop.js';
 import Detail from './Route/Detail.js';
 import Login from './Route/Login.js';
+import About from './Route/Aboutus.js';
 import axios from 'axios';
 import Mypage from './Route/Mypage';
 
@@ -30,6 +31,8 @@ function App() {
         <Route path='/login' element={<Login></Login>} />
 
         <Route path='/mypage' element={<Mypage></Mypage>} />
+
+        <Route path='/about' element={<About></About>} />
 
         <Route path='/:page' element={<Detail></Detail>} />
 
