@@ -8,9 +8,10 @@ button {
 }
 .main {
     margin-top: 80px;
+    height: auto;
+    min-height: 100%;
 }
-table {
-}
+
 img {
     width: 80%;
     height: 100%;

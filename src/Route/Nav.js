@@ -118,6 +118,7 @@ function Navb() {
                 </nav>
             </div>
 
+            {/* 왼쪽 사이드 nav */}
             <div id='dropdown-nav' className={cs(`dropdown-nav`, `${drop}`)}>
                 <div className={cs('nav-modal')}>
                     <div className={cs('close-dropdown')}>
@@ -165,7 +166,7 @@ function Navb() {
                             None();
                         }}>STORE</p>
                         <p onClick={() => {
-                            navigate('/shop');
+                            navigate('/mypage');
                             None();
                         }}>ORDER</p>
                         <p>ABOUT OUS</p>

@@ -34,6 +34,7 @@ function Mypage() {
             .then(res => {
                 setJdata(res.data)
                 console.log('성공');
+                // 총 합계 금액
                 let qq = 0;
                 if (res.data.length == 0) {
                     setTotal_price(0)
@@ -43,11 +44,21 @@ function Mypage() {
                         setTotal_price(qq.toLocaleString('ko-KR'))
                     });
                 }
+
+                // 장바구니 footer
+                // if(res.data.length < 3) {
+                //     document.getElementById('main-footer').style.position = 'absolute'
+                //     document.getElementById('main-footer').style.width = '100%'
+                //     document.getElementById('main-footer').style.bottom = '0'
+                // } else if (res.data.length >= 3) {
+                //     document.getElementById('main-footer').style.position = ''
+                //     document.getElementById('main-footer').style.width = ''
+                //     document.getElementById('main-footer').style.bottom = ''
+                // }
             })
             .catch((error) => {
                 console.log(error);
             })
-        console.log(jdata);
     }, [aa])
 
     // if(jdata.length == 0) {
@@ -143,7 +154,7 @@ function Mypage() {
                             )
                         })
 
-                        : <h1>장바구니 페이지</h1>
+                        : null
                 }
             </table>
 

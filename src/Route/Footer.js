@@ -12,15 +12,14 @@ function Footer() {
     var para = document.location.href.split("/");
 
     setTimeout(() => {
-        if(para[3] == 'mypage') {
-            document.getElementById('main-footer').style.position = 'relative'
-            document.getElementById('main-footer').style.bottom = '0'
-            document.getElementById('main-footer').style.width = '100%'
-        }
+        // useEffect(()=> {
+            if(para[3] == 'mypage') {
+            //     document.getElementById('main-footer').style.position = 'absolute'
+            //     document.getElementById('main-footer').style.width = '100%'
+            //     document.getElementById('main-footer').style.bottom = '0'
+            }
+        // })
     }, 1);
-
-    // useEffect(()=> {
-    // },[])
 
 
     return (
