@@ -92,9 +92,11 @@ function Mypage() {
 
                             <div className={cs('barsket')}>
                                 <div className={cs('item-img')}>
-                                    <img src={process.env.PUBLIC_URL + `/img/about.jpg`} />
+                                    <img src={process.env.PUBLIC_URL + `/img/${jdata[i].img}.jpg`} />
                                 </div>
-                                <p>{title}</p>
+                                <div className={cs('title')}>
+                                    <p>{title}</p>
+                                </div>
                                 <p>{price}원</p>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                     <input style={{ height: '30px' }} type="number" value={count} min="1" max="10" />
@@ -124,7 +126,7 @@ function Mypage() {
                                     </div>
                                 </div>
                                 {/* <p>배송비 : 무료</p> */}
-                                <p style={{margin : '10px'}}>합계 : {total}원</p>
+                                <p style={{ margin: '10px' }}>합계 : {total}원</p>
                                 <div className={cs('delete')}>
                                     <button id='x' onClick={() => {
                                         let name = jdata[i].title
@@ -141,7 +143,7 @@ function Mypage() {
                             </div>
                         )
                     })
-                    : <h3 style={{margin : '15px'}}>* 장바구니에 담은 상품이 존재하지 않습니다.</h3>
+                    : <div style={{ height: '100px' }}></div>
             }
 
             {/* {

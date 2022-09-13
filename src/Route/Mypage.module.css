@@ -91,6 +91,7 @@ h3 {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    text-align: center;
 }
 input {
     margin: 5px;
@@ -100,10 +101,17 @@ input {
     width: 200px;
     height: 200px;
     margin: 10px;
+    margin-top: 20px;
+}
+.title {
+    width: 20%;
 }
 
 @media (max-width: 600px) {
     .barsket {
         flex-direction: column;
+    }
+    .title {
+        width: 100%;
     }
 }
