@@ -28,20 +28,25 @@ function Mypage() {
 
 
     let [jdata, setJdata] = useState([])
+    let [total_price, setTotal_price] = useState()
     useEffect(() => {
         axios('http://localhost:8000/barsket')
             .then(res => {
                 setJdata(res.data)
                 console.log('성공');
-                // console.log(res.data);
+                let qq= 0;
+                res.data.forEach((a,i) => {
+                    qq += a.total
+                    setTotal_price(qq.toLocaleString('ko-KR'))
+                });
             })
             .catch((error) => {
                 console.log(error);
             })
         console.log(jdata);
     }, [aa])
-    // console.log(jdata[0].count);
 
+    
 
 
     return (
@@ -139,17 +144,7 @@ function Mypage() {
 
                     <p>총 상품 개수 : {jdata.length}개</p>
                     <p>배송료 : 무료 </p>
-                    <p>합계 금액 : {
-                        jdata.map((a, i) => {
-                            let qq;
-                            let tt = parseInt(jdata[i].total)
-                            qq += tt
-                            console.log(tt);
-                            return (
-                                qq
-                            )
-                        })
-                    }</p>
+                    <p>합계 금액 : {total_price}원</p>
                     <button>구매하기</button>
                 </div>
             </div>
