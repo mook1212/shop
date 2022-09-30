@@ -117,6 +117,27 @@ function Detail() {
 
         }
 
+        function buy() {
+
+            if (opt == 'none') {
+                alert('옵션을 선택해주세요')
+            } else if (filter.length == 0) {
+                axios.post('http://localhost:8000/barsket', {
+                    title: Title,
+                    img: Img,
+                    price: Price,
+                    count: Count,
+                    total: Total
+                })
+                    .then(function (res) {
+                        console.log(res);
+                    })
+                    .catch(() => {
+                        console.log("실패");
+                    });
+            }
+        }
+
 
         return (
             <>

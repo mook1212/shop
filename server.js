@@ -54,8 +54,7 @@ app.get('/barsket', (req,res)=> {
         // console.log(결과);
         res.send(결과)
     })
-    console.log('1');
-
+    console.log('장바구니 조회 완료');
 })
 
 // 장바구니에 정보 삭제
@@ -74,9 +73,9 @@ app.put('/barsket-update', (req,res) => {
     console.log(req.body.title);
     console.log(req.body.count);
     db.collection('post').updateOne({title : req.body.title},{$set : {count : req.body.count, total : req.body.total}}, (에러, 결과) => {
-		console.log('삭제완료');
 		res.status(200).send({ message: '성공했음' });
 	})
+    console.log('수정완료');
 })
 
 
